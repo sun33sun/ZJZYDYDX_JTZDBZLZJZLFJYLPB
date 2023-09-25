@@ -10844,7 +10844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &675109332
 Transform:
   m_ObjectHideFlags: 0
@@ -10907,6 +10907,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 71be5ab6a3c2f164bbf855cce6278fd3, type: 2}
     - {fileID: 11400000, guid: dee45d9a7b4e8004188fbf9441bca153, type: 2}
     - {fileID: 11400000, guid: e67f21702cc991345a971ac4de23636e, type: 2}
+    - {fileID: 11400000, guid: 0a7ea63933c74534db39730553d410a3, type: 2}
+    - {fileID: 11400000, guid: 1f1241fded51abc4eb41b86cfb969ea4, type: 2}
+    - {fileID: 11400000, guid: 0656fa966ffba124f92ae6a9aabdcef3, type: 2}
+    - {fileID: 11400000, guid: d11174892844d5743ac6ad445fffc391, type: 2}
+    - {fileID: 11400000, guid: 33cefbd7cfdb035458dc0caa69f5d553, type: 2}
+    - {fileID: 11400000, guid: 07b76f01abd5a8d46820bd119821bb40, type: 2}
+    - {fileID: 11400000, guid: 8abc71f3afcde9b48b3544b3aa9574c5, type: 2}
+    - {fileID: 11400000, guid: 1fcaec7bacfb16248a44dda9eb882689, type: 2}
+    - {fileID: 11400000, guid: e7a6e0224d9ee7645bacdfec8bba79ca, type: 2}
+    - {fileID: 11400000, guid: 9149c6e58ab3c444b8504d0727fca738, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -11016,6 +11026,136 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_MethodName: SecondCokeKettleClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: SoakQuestion
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: BowlClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: ElixationQuestion
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: FirstCoolDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: OtherMedicant
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: FirstCokeClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: FirstCokeQuestion
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: SecondCokeKettleClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: SecondCokeQuestion
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 675109336}
+          m_MethodName: SecondCokeWaterQuestion
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11137,6 +11277,7 @@ PlayableDirector:
     - 1900938728f6cf64996019bc5f7bf98d: {fileID: 908150490}
     - 933049fdb1353544da3b44c05d06daf2: {fileID: 908150490}
     - 257aee03c6b667a428be017e70c2af5a: {fileID: 1730919137}
+    - b09d645a2cd03094799dc87a5c874ea9: {fileID: 57832987}
     - e7dbdfc58775cf54c84a369b3d7bc407: {fileID: 0}
     - 20ba45c73f8023e479b7aca3a7d16c97: {fileID: 791185077}
     - 3c5b6ac02792ac943a50fcc90213194e: {fileID: 5411014846404672667}
@@ -16948,7 +17089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135916864}
   m_LocalRotation: {x: 0.08852135, y: 0.90767336, z: -0.24321039, w: 0.3303661}
-  m_LocalPosition: {x: -0.4013672, y: 1.7915151, z: 0.68312204}
+  m_LocalPosition: {x: 1.2509766, y: 2.0129998, z: 4.0989995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 646730520}
@@ -17173,7 +17314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240984380}
   m_LocalRotation: {x: 0.10851144, y: 0.7052416, z: -0.11061865, w: 0.6918259}
-  m_LocalPosition: {x: 1.2412109, y: 1.569, z: 3.7030792}
+  m_LocalPosition: {x: 1.2412109, y: 1.64, z: 3.3689795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2084624301}
@@ -22768,7 +22909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615922893}
   m_LocalRotation: {x: 0.18301274, y: 0.6830127, z: -0.18301274, w: 0.6830127}
-  m_LocalPosition: {x: -0.20605469, y: 1.8209989, z: 0.1608918}
+  m_LocalPosition: {x: 0.671875, y: 1.9580836, z: 3.6257915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 34866600}
@@ -25839,6 +25980,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 71be5ab6a3c2f164bbf855cce6278fd3, type: 2}
     - {fileID: 11400000, guid: dee45d9a7b4e8004188fbf9441bca153, type: 2}
     - {fileID: 11400000, guid: e67f21702cc991345a971ac4de23636e, type: 2}
+    - {fileID: 11400000, guid: e2ea8db2eed298d40811617381d07d67, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -25934,7 +26076,7 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2703735871408770622}
-          m_MethodName: SecondCokeQuestion
+          m_MethodName: SecondCokeClock
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -25952,6 +26094,19 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2703735871408770621}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -27768,8 +27923,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5411014847654953201}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.92387956, z: -0.38268343, w: 1}
+  m_LocalPosition: {x: 0.7001953, y: 1.8, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5411014846789687668}

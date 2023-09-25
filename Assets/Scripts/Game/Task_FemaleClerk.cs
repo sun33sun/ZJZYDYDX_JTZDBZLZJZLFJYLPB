@@ -144,6 +144,14 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             });
         }
 
+        public void SecondCokeWaterQuestion()
+        {
+            StartAsync(async () =>
+            {
+                await _gamePanel.WaitQuestion(ExtensionFunction.secondCokeQuestion);
+            });
+        }
+        
         public void SecondCokeQuestion()
         {
             UniTask.Void(async () =>
@@ -151,7 +159,6 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
                 if (_token.IsCancellationRequested) return;
                 State = GameState.Stopped;
                 _director.Pause();
-                await _gamePanel.WaitQuestion(ExtensionFunction.secondCokeQuestion);
                 LeftFire.gameObject.SetActive(true);
                 LeftFire.Play();
                 await _gamePanel.WaitClock(-120, "第二次煎煮，20分钟");

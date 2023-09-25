@@ -19,7 +19,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
         protected override void OnInit(IUIData uiData = null)
         {
             mData = uiData as BottomPanelData ?? new BottomPanelData();
-            
+
             btnMain.AddAwaitAction(async () =>
             {
                 if (ExtensionFunction.NowPanel is MainPanel)
@@ -27,7 +27,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
                 GameRoot.Instance.PauseGame?.Invoke();
                 await ExtensionFunction._topPanel.imgBackMain.ShowAsync();
             });
-            
+
             btnHelp.AddAwaitAction(async () =>
             {
                 GameRoot.Instance.PauseGame?.Invoke();
