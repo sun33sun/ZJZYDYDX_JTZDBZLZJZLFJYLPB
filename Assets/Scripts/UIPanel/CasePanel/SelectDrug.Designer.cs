@@ -12,7 +12,9 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 	{
 		[SerializeField] public TMPro.TextMeshProUGUI tmpRecordContent;
 		[SerializeField] public UnityEngine.UI.Button btnSubmitDrug;
-		[SerializeField] public ImgRightDrug imgRightDrug;
+		[SerializeField] public UnityEngine.RectTransform imgRightDrug;
+		[SerializeField] public UnityEngine.RectTransform RightDrugGroup;
+		[SerializeField] public UnityEngine.UI.Button btnConfirmRightDrug;
 		[SerializeField] public ImgInputWeight imgInputWeight;
 
 		public void Clear()
@@ -20,6 +22,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			tmpRecordContent = null;
 			btnSubmitDrug = null;
 			imgRightDrug = null;
+			RightDrugGroup = null;
+			btnConfirmRightDrug = null;
 			imgInputWeight = null;
 		}
 

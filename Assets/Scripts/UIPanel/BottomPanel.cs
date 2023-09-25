@@ -4,6 +4,7 @@ using ProjectBase;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -18,16 +19,20 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
         protected override void OnInit(IUIData uiData = null)
         {
             mData = uiData as BottomPanelData ?? new BottomPanelData();
-
-            TopPanel topPanel = UIKit.GetPanel<TopPanel>();
+            
             btnMain.AddAwaitAction(async () =>
             {
                 if (ExtensionFunction.NowPanel is MainPanel)
                     return;
-                await topPanel.imgBackMain.ShowAsync();
+                GameRoot.Instance.PauseGame?.Invoke();
+                await ExtensionFunction._topPanel.imgBackMain.ShowAsync();
             });
             
-            btnHelp.AddAwaitAction(async () => await topPanel.imgHelp.ShowAsync());
+            btnHelp.AddAwaitAction(async () =>
+            {
+                GameRoot.Instance.PauseGame?.Invoke();
+                await ExtensionFunction._topPanel.imgHelp.ShowAsync();
+            });
 
             btnScreen.OnPointerClickEvent(d => { Screen.fullScreen = !Screen.fullScreen; });
         }

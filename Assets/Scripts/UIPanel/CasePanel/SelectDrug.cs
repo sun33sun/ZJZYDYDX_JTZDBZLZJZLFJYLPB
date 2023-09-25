@@ -21,25 +21,44 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
 		private void Awake()
 		{
+			for (var i = 0; i < _drugItems.Count; i++)
+			{
+				int index = i;
+				_drugItems[i].tog.onValueChanged.AddListener(isOn =>
+				{
+					_selectedDrugItems[index].gameObject.SetActive(isOn);
+				});
+			}
+			
 			for (var i = 0; i < _selectedDrugItems.Count; i++)
 			{
 				int index = i;
 				_selectedDrugItems[i].btn.onClick.AddListener(() =>
 				{
+					_drugItems[index].tog.isOn = false;
 					_selectedDrugItems[index].gameObject.SetActive(false);
 					_drugItems[index].tog.isOn = false;
 				});
 			}
 			btnSubmitDrug.AddAwaitAction(async () =>
 			{
+				//如果错误
 				await imgRightDrug.ShowAsync();
+				// //如果正确
+				// await imgInputWeight.ShowAsync();
+			});
+			
+			btnConfirmRightDrug.AddAwaitAction(async () =>
+			{
+				await imgRightDrug.HideAsync();
+				await imgInputWeight.ShowAsync();
 			});
 		}
-
+		
 		protected override void OnBeforeDestroy()
 		{
 		}
-
+		
 		void Init()
 		{
 			foreach (var selectedDrugItem in _selectedDrugItems)

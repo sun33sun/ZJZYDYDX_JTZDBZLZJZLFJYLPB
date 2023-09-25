@@ -6,17 +6,23 @@ namespace ProjectBase
 {
     public class CameraManager : SingletonMono<CameraManager>
     {
+        public enum RenderType
+        {
+            Camera,RenderTexture
+        }
         List<IPersonView> personViews = new List<IPersonView>();
         PersonViewField pvField;
         [SerializeField] bool isEnable = false;
         public PersonViewType pvType = PersonViewType.FirstPerson;
+        [SerializeField] private RenderTexture rt;
 
 
         [SerializeField] Camera mainC;
         [SerializeField] CinemachineVirtualCamera noneC = null;
         [SerializeField] CinemachineVirtualCamera firstC = null;
-        [SerializeField] CinemachineVirtualCamera followC = null;
         [SerializeField] CinemachineVirtualCamera thirdC = null;
+        [SerializeField] CinemachineVirtualCamera roundC = null;
+        [SerializeField] CinemachineVirtualCamera followC = null;
 
         //漫游相机的刚体
         Rigidbody roamRig = null;
@@ -137,28 +143,65 @@ namespace ProjectBase
         {
             pvType = PersonViewType.ThirdPerson;
             (personViews[(int)pvType] as ThirdPersonView).Player = playerController;
-            thirdC.Priority = 20;
-            noneC.Priority = 10;
-            firstC.Priority = 10;
-            followC.Priority = 10;
+            thirdC.Priority = 2;
+            noneC.Priority = 1;
+            firstC.Priority = 1;
+            followC.Priority = 1;
         }
 
         public void NonePersonView()
         {
             pvType = PersonViewType.None;
-            noneC.Priority = 20;
-            thirdC.Priority = 10;
-            firstC.Priority = 10;
-            followC.Priority = 10;
+            noneC.Priority = 2;
+            thirdC.Priority = 1;
+            firstC.Priority = 1;
+            roundC.Priority = 1;
+            followC.Priority = 1;
         }
 
         public void FirstPersonView()
         {
             pvType = PersonViewType.FirstPerson;
-            thirdC.Priority = 10;
-            noneC.Priority = 20;
-            firstC.Priority = 10;
-            followC.Priority = 10;
+            firstC.Priority = 2;
+            noneC.Priority = 1;
+            thirdC.Priority = 1;
+            roundC.Priority = 1;
+            followC.Priority = 1;
+        }
+        
+        public void RoundPersonView(Transform target)
+        {
+            pvType = PersonViewType.RoundObject;
+            roundC.Follow = target;
+            roundC.Priority = 2;
+            noneC.Priority = 1;
+            firstC.Priority = 1;
+            thirdC.Priority = 1;
+            followC.Priority = 1;
+        }
+
+        public void FollowPersonView(Transform target)
+        {
+            pvType = PersonViewType.FollowObject;
+            followC.Follow = target;
+            followC.Priority = 2;
+            noneC.Priority = 1;
+            firstC.Priority = 1;
+            thirdC.Priority = 1;
+            roundC.Priority = 1;
+        }
+
+        public void SwitchRenderType(RenderType renderType)
+        {
+            switch (renderType)
+            {
+                case RenderType.Camera:
+                    mainC.targetTexture = null; 
+                    break;
+                case RenderType.RenderTexture:
+                    mainC.targetTexture = rt;
+                    break;
+            }
         }
         #endregion
 

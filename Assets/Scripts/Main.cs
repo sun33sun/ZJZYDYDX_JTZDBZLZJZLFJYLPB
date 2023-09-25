@@ -11,8 +11,10 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
     {
         async UniTask Start()
         {
-            await ExtensionFunction.UnrecordOpenPanelAsync<TopPanel>(TopPanel.Name);
-            await ExtensionFunction.UnrecordOpenPanelAsync<BottomPanel>(BottomPanel.Name);
+            await ExtensionFunction.UnrecordOpenPanelAsync<TopPanel>(TopPanel.Name).ToUniTask(this);
+            await ExtensionFunction.UnrecordOpenPanelAsync<BottomPanel>(BottomPanel.Name).ToUniTask(this);
+            ExtensionFunction._topPanel = UIKit.GetPanel<TopPanel>();
+            ExtensionFunction._bottomPanel = UIKit.GetPanel<BottomPanel>();
         }
     }
 }

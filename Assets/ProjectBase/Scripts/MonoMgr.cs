@@ -16,6 +16,7 @@ namespace ProjectBase
     public class MonoMgr : Singleton<MonoMgr>
     {
         private MonoController controller;
+        public MonoController Controller => controller;
 
         public MonoMgr()
         {

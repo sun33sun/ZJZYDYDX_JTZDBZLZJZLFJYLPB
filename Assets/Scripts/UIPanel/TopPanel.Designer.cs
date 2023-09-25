@@ -5,7 +5,7 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:8de59ef2-b450-46ed-bfa3-bb18b4c7831d
+	// Generate Id:3b4e4cef-d97c-41d8-8c12-2b56023bc025
 	public partial class TopPanel
 	{
 		public const string Name = "TopPanel";
@@ -26,6 +26,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		public UnityEngine.UI.Button btnCloseHelp;
 		[SerializeField]
 		public UnityEngine.UI.Image imgMask;
+		[SerializeField]
+		public UnityEngine.UI.Image imgBlank;
 		
 		private TopPanelData mPrivateData = null;
 		
@@ -39,6 +41,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			imgHelp = null;
 			btnCloseHelp = null;
 			imgMask = null;
+			imgBlank = null;
 			
 			mData = null;
 		}

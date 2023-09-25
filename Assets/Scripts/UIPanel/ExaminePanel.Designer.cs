@@ -5,15 +5,17 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:a932889a-541c-45b7-97e3-b5b2fdb5f54b
+	// Generate Id:ccb4d905-8081-4d39-8c19-312376ed9cc5
 	public partial class ExaminePanel
 	{
 		public const string Name = "ExaminePanel";
 		
 		[SerializeField]
-		public RectTransform objConfirm;
+		public ProjectBase.Exam.QuestionParent svTitle;
 		[SerializeField]
 		public UnityEngine.UI.Button btnConfirm;
+		[SerializeField]
+		public UnityEngine.UI.Button btnSubmit;
 		[SerializeField]
 		public UnityEngine.RectTransform imgDoubleConfirm;
 		[SerializeField]
@@ -25,8 +27,9 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		
 		protected override void ClearUIComponents()
 		{
-			objConfirm = null;
+			svTitle = null;
 			btnConfirm = null;
+			btnSubmit = null;
 			imgDoubleConfirm = null;
 			btnDoubleConfirm = null;
 			btnDoubleCancel = null;

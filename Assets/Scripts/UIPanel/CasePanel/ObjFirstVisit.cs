@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ProjectBase;
 using ProjectBase.DataClass;
 using UnityEngine;
@@ -18,11 +19,13 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
         [SerializeField] private List<Sprite> _sprites;
         [SerializeField] private IntStringArrayDictionary _diagnosticRecords;
         public ObjSelectCase.Case NowCase { get; set; }
+        List<bool> isClicks = new List<bool>();
 
         private void Awake()
         {
             for (int i = 0; i < _toggles.Count; i++)
             {
+                isClicks.Add(false);
                 int index = i;
                 Image image = _toggles[i].GetComponent<Image>();
                 _toggles[i].AddAwaitAction(isOn =>
@@ -36,10 +39,13 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
                     {
                         image.sprite = _sprites[1];
                     }
+                    isClicks[index] = true;
+                    if(isClicks.All(x => x))
+                        btnSubmit.gameObject.SetActive(true);
                 });
             }
 
-            btnStartPractice.AddAwaitAction(async () => await this.HideAsync());
+            btnSubmit.AddAwaitAction(async () => await this.HideAsync());
         }
 
         protected override void OnBeforeDestroy()

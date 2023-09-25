@@ -1,9 +1,11 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using ProjectBase;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -20,13 +22,29 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 				await StartGroup.HideAsync();
 				await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
 			});
-			btnCloseHelp.AddAwaitAction(async ()=>await imgHelp.HideAsync());
-			btnDoubleCancel.AddAwaitAction(async ()=>await imgBackMain.HideAsync());
-			btnDoubleConfirm.AddAwaitAction(async ()=>
+			btnCloseHelp.AddAwaitAction(async () =>
+			{
+				GameRoot.Instance.ResumeGame?.Invoke();
+				await imgHelp.HideAsync();
+			});
+			btnDoubleCancel.AddAwaitAction(async () =>
 			{
 				await imgBackMain.HideAsync();
-				await ExtensionFunction.ClosePanelAsync();
-				await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
+				GameRoot.Instance.ResumeGame?.Invoke();
+			});
+			btnDoubleConfirm.AddAwaitAction(async ()=>
+			{
+				if (GameRoot.Instance.PauseGame != null)
+				{
+					imgBackMain.HideSync();
+					await GameRoot.Instance.EndGame();
+				}
+				else
+				{
+					await imgBackMain.HideAsync();
+					await ExtensionFunction.ClosePanelAsync();
+					await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
+				}
 			});
 		}
 		
@@ -44,6 +62,37 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		
 		protected override void OnClose()
 		{
+		}
+
+		public async UniTask OpenEye()
+		{
+			imgBlank.gameObject.SetActive(true);
+			Material mat = imgBlank.material;
+			Vector4 vector = new Vector4(0.6f, 0, 1, 1);
+			while (vector.y < 1)
+			{
+				vector.y += Time.deltaTime;
+				mat.SetVector("_Param", vector);
+				await UniTask.Yield();
+			}
+			vector.y = 1;
+			mat.SetVector("_Param", vector);
+			imgBlank.gameObject.SetActive(false);
+		}
+		
+		public async UniTask CloseEye()
+		{
+			imgBlank.gameObject.SetActive(true);
+			Material mat = imgBlank.material;
+			Vector4 vector = new Vector4(0.6f, 1, 1, 1);
+			while (vector.y > 0)
+			{
+				vector.y -= Time.deltaTime;
+				mat.SetVector("_Param", vector);
+				await UniTask.Yield();
+			}
+			vector.y = 0;
+			mat.SetVector("_Param", vector);
 		}
 	}
 }

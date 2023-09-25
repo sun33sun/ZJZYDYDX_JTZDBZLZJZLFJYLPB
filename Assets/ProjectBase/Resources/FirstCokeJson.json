@@ -1,0 +1,16 @@
+[
+  {
+    "choiceType": 0,
+    "strHead": "___烧开，转___煎煮___分钟",
+    "optionDic": {
+      "A": "文火，文火，20",
+      "B": "武火，文火，30",
+      "C": "文火，武火，20",
+      "D": "武火，武火，40"
+    },
+    "multipleRights": [],
+    "singleRight": 3,
+    "score": 1.0,
+    "strAnalysis": ""
+  }
+]

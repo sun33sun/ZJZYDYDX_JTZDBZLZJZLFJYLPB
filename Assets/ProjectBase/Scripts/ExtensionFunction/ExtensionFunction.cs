@@ -11,6 +11,7 @@ using HighlightPlus;
 using QFramework;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 using ZJZYDYDX_JTZDBZLZJZLFJYLPB;
 
@@ -20,15 +21,40 @@ namespace ProjectBase
     {
         public static float HideTime = 0.5f;
         public static float ShowTime = 0.5f;
+        public static TopPanel _topPanel;
+        public static BottomPanel _bottomPanel;
+        
         public static string UI => "Resources/UIPrefab/";
         public static UIPanel NowPanel = null;
+        
+        //病例引入模块
+        public const string soakQuestion = "SoakJson";
+        public const string previewCokeQuestion = "PreviewCokeJson";
+        public const string firstCokeQuestion = "FirstCokeJson";
+        public const string secondCokeQuestion = "SecondCokeJson";
+        //女社员二诊
+        public const  string secondVisitQuestion = "SecondVisitJson";
+        
+        
+        //答题模块
+        public const string questionJson = "QuestionJson";
+        public const string questionPrefab = "QuestionPrefab";
+        public const string optionPrefab = "OptionPrefab";
 
         #region UI扩展
+        static Func<bool> GetWaitAnimFunc(this Button btn)
+        {
+            return () =>
+            {
+                AnimatorStateInfo info = btn.animator.GetCurrentAnimatorStateInfo(0);
+                return  info.IsName("Normal") && info.normalizedTime > 1;
+            };
+        }
 
-        public static async UniTask UnrecordOpenPanelAsync<T>(string prefabName, IUIData uiData = null)
+        public static IEnumerator UnrecordOpenPanelAsync<T>(string prefabName, IUIData uiData = null)
             where T : UIPanel
         {
-            await UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel, uiData, prefabName: UI + prefabName).ToUniTask();
+            yield return UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel, uiData, prefabName: UI + prefabName);
             UIKit.GetPanel<T>().GetComponent<Canvas>().worldCamera = UIRoot.Instance.UICamera;
         }
 
@@ -43,9 +69,24 @@ namespace ProjectBase
             UnityAction asyncAction = async () =>
             {
                 if (token.IsCancellationRequested) return;
-                UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(true);
+                _topPanel.imgMask.gameObject.SetActive(true);
                 await invoke();
-                UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(false);
+                _topPanel.imgMask.gameObject.SetActive(false);
+            };
+            btn.onClick.AddListener(asyncAction);
+        }
+        
+        public static void AddAwaitAction(this Button btn, Action invoke)
+        {
+            CancellationToken token = btn.GetCancellationTokenOnDestroy();
+            Func<bool> waitAnim = btn.GetWaitAnimFunc();
+            UnityAction asyncAction = async () =>
+            {
+                if (token.IsCancellationRequested) return;
+                _topPanel.imgMask.gameObject.SetActive(true);
+                await UniTask.WaitUntil(waitAnim);
+                invoke();
+                _topPanel.imgMask.gameObject.SetActive(false);
             };
             btn.onClick.AddListener(asyncAction);
         }
@@ -66,10 +107,10 @@ namespace ProjectBase
                 {
                     if (token.IsCancellationRequested) return;
                     if (isOn)
-                        UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(true);
+                        _topPanel.imgMask.gameObject.SetActive(true);
                     await invoke(isOn);
                     if (isOn)
-                        UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(false);
+                        _topPanel.imgMask.gameObject.SetActive(false);
                 };
             }
             else
@@ -77,9 +118,9 @@ namespace ProjectBase
                 asyncAction = async isOn =>
                 {
                     if (token.IsCancellationRequested) return;
-                    UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(true);
+                    _topPanel.imgMask.gameObject.SetActive(true);
                     await invoke(isOn);
-                    UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(false);
+                    _topPanel.imgMask.gameObject.SetActive(false);
                 };
             }
 
@@ -102,11 +143,11 @@ namespace ProjectBase
                 {
                     if (token.IsCancellationRequested) return;
                     if (isOn)
-                        UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(true);
+                        _topPanel.imgMask.gameObject.SetActive(true);
                     await tog.animator.GetAsyncAnimatorMoveTrigger().FirstAsync(tog.GetCancellationTokenOnDestroy());
                     invoke(isOn);
                     if (isOn)
-                        UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(false);
+                        _topPanel.imgMask.gameObject.SetActive(false);
                 };
             }
             else
@@ -114,10 +155,10 @@ namespace ProjectBase
                 asyncAction = async isOn =>
                 {
                     if (token.IsCancellationRequested) return;
-                    UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(true);
+                    _topPanel.imgMask.gameObject.SetActive(true);
                     await tog.animator.GetAsyncAnimatorMoveTrigger().FirstAsync(tog.GetCancellationTokenOnDestroy());
                     invoke(isOn);
-                    UIKit.GetPanel<TopPanel>().imgMask.gameObject.SetActive(false);
+                    _topPanel.imgMask.gameObject.SetActive(false);
                 };
             }
 
@@ -134,7 +175,7 @@ namespace ProjectBase
         {
             if (NowPanel == null && panelName.IsNullOrEmpty())
                 return;
-            await UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel, prefabName: UI + panelName).ToUniTask();
+            await UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel, prefabName: UI + panelName).ToUniTask(MonoMgr.GetInstance().Controller);
             NowPanel = UIKit.GetPanel<T>();
             Canvas canvas = NowPanel.GetComponent<Canvas>();
             canvas.worldCamera = UIRoot.Instance.Camera;
@@ -146,7 +187,6 @@ namespace ProjectBase
             if (NowPanel == null)
                 return;
             await NowPanel.GetComponent<CanvasGroup>().DOFade(0, ShowTime).AsyncWaitForCompletion();
-            // await t.transform.DOLocalMoveY(1080, HideTime).AsyncWaitForCompletion();
             UIKit.ClosePanel(NowPanel);
             NowPanel = null;
         }
@@ -228,7 +268,6 @@ namespace ProjectBase
 
             await UniTask.WaitUntil(() => count == 0, cancellationToken: cancellationToken);
         }
-
         #endregion
     }
 }

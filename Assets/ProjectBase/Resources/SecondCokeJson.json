@@ -1,0 +1,16 @@
+[
+  {
+    "choiceType": 0,
+    "strHead": "根据文火的大小不同，在砂锅中加入___~___ml开水",
+    "optionDic": {
+      "A": "100；150",
+      "B": "100；350",
+      "C": "300；350",
+      "D": "200；350"
+    },
+    "multipleRights": [],
+    "singleRight": 3,
+    "score": 1.0,
+    "strAnalysis": ""
+  }
+]

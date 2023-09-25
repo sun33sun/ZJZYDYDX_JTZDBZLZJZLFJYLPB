@@ -4,6 +4,7 @@ using ProjectBase;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -25,7 +26,18 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			await UniTask.WhenAny(objSelectCase.btnCase1.OnClickAsync(_tokenDestroy),
 				objSelectCase.btnCase2.OnClickAsync(_tokenDestroy));
 			await objFirstVisit.ShowAsync();
-			await objFirstVisit.btnStartPractice.OnClickAsync(_tokenDestroy);
+			await objFirstVisit.btnSubmit.OnClickAsync(_tokenDestroy);
+			await selectDrug.ShowAsync();
+			await selectDrug.imgInputWeight.btnSubmit.OnClickAsync(_tokenDestroy);
+			switch (objSelectCase.NowCase)
+			{
+				case ObjSelectCase.Case.MaleStudent:
+					GameRoot.Instance.StartMaleStudent();
+					break;
+				case ObjSelectCase.Case.FemaleClerk:
+					GameRoot.Instance.StartFemaleClerk();
+					break;
+			}
 		}
 		
 		protected override void OnOpen(IUIData uiData = null)

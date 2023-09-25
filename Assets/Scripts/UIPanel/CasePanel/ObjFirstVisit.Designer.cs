@@ -10,12 +10,12 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
 	public partial class ObjFirstVisit
 	{
-		[SerializeField] public UnityEngine.UI.Button btnStartPractice;
+		[SerializeField] public UnityEngine.UI.Button btnSubmit;
 		[SerializeField] public TMPro.TextMeshProUGUI tmpRecordContent;
 
 		public void Clear()
 		{
-			btnStartPractice = null;
+			btnSubmit = null;
 			tmpRecordContent = null;
 		}
 

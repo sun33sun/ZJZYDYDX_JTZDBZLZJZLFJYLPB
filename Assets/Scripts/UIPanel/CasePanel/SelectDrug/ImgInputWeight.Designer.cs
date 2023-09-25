@@ -10,17 +10,13 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
 	public partial class ImgInputWeight
 	{
-		[SerializeField] public UnityEngine.UI.Button btnConfirmTip;
+		[SerializeField] public UnityEngine.UI.Button btnSubmit;
 		[SerializeField] public UnityEngine.RectTransform RightDrugGroup;
-		[SerializeField] public UnityEngine.UI.Button btnPre;
-		[SerializeField] public UnityEngine.UI.Button btnNext;
 
 		public void Clear()
 		{
-			btnConfirmTip = null;
+			btnSubmit = null;
 			RightDrugGroup = null;
-			btnPre = null;
-			btnNext = null;
 		}
 
 		public override string ComponentName

@@ -11,31 +11,32 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	public partial class ObjSelectCase : UIElement
-	{
-		public enum Case
-		{
-			MaleStudent,FemaleClerk
-		}
-		
-		public Case NowCase { get; private set; }
-		
-		private void Awake()
-		{
-			btnCase1.AddAwaitAction(async () =>
-			{
-				NowCase = (Case)0;
-				await this.HideAsync();
-			});
-			btnCase2.AddAwaitAction(async () =>
-			{
-				NowCase = (Case)1;
-				await this.HideAsync();
-			});
-		}
+    public partial class ObjSelectCase : UIElement
+    {
+        public enum Case
+        {
+            MaleStudent,
+            FemaleClerk
+        }
 
-		protected override void OnBeforeDestroy()
-		{
-		}
-	}
+        public Case NowCase { get; private set; }
+
+        private void Awake()
+        {
+            btnCase1.AddAwaitAction(async () =>
+            {
+                NowCase = Case.MaleStudent;
+                await this.HideAsync();
+            });
+            btnCase2.AddAwaitAction(async () =>
+            {
+                NowCase = Case.FemaleClerk;
+                await this.HideAsync();
+            });
+        }
+
+        protected override void OnBeforeDestroy()
+        {
+        }
+    }
 }
