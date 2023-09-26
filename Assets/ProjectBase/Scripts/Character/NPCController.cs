@@ -10,36 +10,41 @@ using UnityEngine.AI;
 
 namespace ProjectBase
 {
-    [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(Animator))]
     public class NPCController : MonoBehaviour
     {
-        [SerializeField] protected NavMeshAgent _agent;
-        [SerializeField] protected Animator _animator;
-        
-        public async UniTask WalkTo(Transform target)
+        [SerializeField] internal NavMeshAgent _agent;
+        [SerializeField] internal Animator _animator;
+
+        public async UniTask WalkTo(Transform target, CancellationToken token)
         {
+            if (token.IsCancellationRequested)
+                return;
+            _agent.enabled = true;
+            _agent.isStopped = false;
             _agent.SetDestination(target.position);
-            _animator.Play("走路");
-            await UniTask.WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
-            _animator.Play("站立");
+            _animator.Play("Walk");
+            await UniTask.WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance,
+                cancellationToken: token);
+            _animator.Play("Idle");
+            _agent.isStopped = true;
+            transform.rotation = target.rotation;
+            transform.position = target.position;
         }
 
-        public virtual async UniTask PlayAnimAsync(string animName)
+        public virtual async UniTask PlayAnimAsync(string animName, CancellationToken token)
         {
-            if(this.GetCancellationTokenOnDestroy().IsCancellationRequested)
+            if (token.IsCancellationRequested)
                 return;
             if (_animator.HasState(0, Animator.StringToHash(animName)))
             {
                 _animator.Play(animName);
-                _animator.Play(animName);
                 await UniTask.Yield();
-                await UniTask.WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1);
+                await _animator.GetAsyncAnimatorMoveTrigger().FirstOrDefaultAsync(token);
             }
             else
             {
                 await UniTask.Yield();
-                print($"没有动画<color=green>{animName}</color>");
+                print($"没有动画<color=red>{animName}</color>");
             }
         }
 
@@ -51,17 +56,20 @@ namespace ProjectBase
             }
             else
             {
-                print($"没有动画<color=green>{animName}</color>");
+                print($"没有动画<color=red>{animName}</color>");
             }
         }
 
-        public async UniTask SitDown(Transform target)
+        public async UniTask SitDown(Transform target, CancellationToken token)
         {
-            // transform.position = target.position;
-            // transform.forward = target.forward;
-            _animator.Play("坐下");
-            await _animator.GetAsyncAnimatorMoveTrigger().FirstOrDefaultAsync(this.GetCancellationTokenOnDestroy());
+            if (token.IsCancellationRequested)
+                return;
+            _agent.enabled = false;
+            await UniTask.Yield(token);
+            transform.rotation = target.rotation;
+            transform.position = target.position;
+            _animator.Play("SitDown");
+            await _animator.GetAsyncAnimatorMoveTrigger().FirstOrDefaultAsync(token);
         }
-        
     }
 }

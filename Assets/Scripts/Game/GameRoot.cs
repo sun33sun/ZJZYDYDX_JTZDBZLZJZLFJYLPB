@@ -9,8 +9,10 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 {
     public enum GameState
     {
-        Running,Stopped
+        Running,
+        Stopped
     }
+
     public partial class GameRoot : ViewController
     {
         //单例
@@ -30,7 +32,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             }
         }
 
-        public async void StartMaleStudent()
+        public async void StartCokeMaleStudent()
         {
             await ExtensionFunction._topPanel.CloseEye();
             await ExtensionFunction.ClosePanelAsync();
@@ -38,10 +40,10 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             task_MaleStudent.StartTask();
             PauseGame = task_MaleStudent.PauseGame;
             ResumeGame = task_MaleStudent.ResumeGame;
-            EndGame = EndMaleStudent;
+            EndGame = EndCokeMaleStudent;
         }
 
-        public async UniTask EndMaleStudent()
+        public async UniTask EndCokeMaleStudent()
         {
             PauseGame = null;
             ResumeGame = null;
@@ -53,8 +55,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
             await ExtensionFunction._topPanel.OpenEye();
         }
-        
-        public async void StartFemaleClerk()
+
+        public async void StartCokeFemaleClerk()
         {
             await ExtensionFunction._topPanel.CloseEye();
             await ExtensionFunction.ClosePanelAsync();
@@ -62,10 +64,10 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             task_FemaleClerk.StartTask();
             PauseGame = task_FemaleClerk.PauseGame;
             ResumeGame = task_FemaleClerk.ResumeGame;
-            EndGame = EndFemaleClerk;
+            EndGame = EndCokeFemaleClerk;
         }
 
-        public async UniTask EndFemaleClerk()
+        public async UniTask EndCokeFemaleClerk()
         {
             PauseGame = null;
             ResumeGame = null;
@@ -76,6 +78,16 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             await ExtensionFunction.ClosePanelAsync();
             await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
             await ExtensionFunction._topPanel.OpenEye();
+        }
+
+        public void StartPharmacy(ObjSelectCase.Case caseType)
+        {
+            Pharmacy.StartPharmacy(caseType);
+        }
+
+        public void EndPharmacy()
+        {
+            Pharmacy.gameObject.SetActive(false);
         }
 
         private void OnDestroy()

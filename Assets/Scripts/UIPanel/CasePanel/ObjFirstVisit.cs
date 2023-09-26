@@ -2,7 +2,6 @@
  * 2023.8 ADMIN-20230222V
  ****************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ProjectBase;
@@ -10,6 +9,7 @@ using ProjectBase.DataClass;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -50,12 +50,21 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
         protected override void OnBeforeDestroy()
         {
+            if(GameRoot.Instance != null)
+                GameRoot.Instance.EndPharmacy();
         }
 
         protected override void OnShow()
         {
             tmpRecordContent.text = _diagnosticRecords[(int)NowCase][0];
+            GameRoot.Instance.StartPharmacy(NowCase);
             base.OnShow();
+        }
+
+        protected override void OnHide()
+        {
+            GameRoot.Instance.EndPharmacy();
+            base.OnHide();
         }
     }
 }
