@@ -508,7 +508,6 @@ GameObject:
   - component: {fileID: 1627485680636353692}
   - component: {fileID: 1627485680636353695}
   - component: {fileID: 1627485680636353694}
-  - component: {fileID: 1627485680636353693}
   - component: {fileID: 1627485680636353690}
   m_Layer: 5
   m_Name: togEmetic
@@ -621,22 +620,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &1627485680636353693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485680636353664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485680636353690
 Animator:
   serializedVersion: 3
@@ -668,7 +651,6 @@ GameObject:
   - component: {fileID: 1627485680716535173}
   - component: {fileID: 1627485680716535172}
   - component: {fileID: 1627485680716535175}
-  - component: {fileID: 1627485680716535174}
   - component: {fileID: 1627485680716535177}
   m_Layer: 5
   m_Name: togCatharsisSelected
@@ -781,22 +763,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485680716535174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485680716535179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485680716535177
 Animator:
   serializedVersion: 3
@@ -988,7 +954,6 @@ GameObject:
   - component: {fileID: 1627485680903235129}
   - component: {fileID: 1627485680903235128}
   - component: {fileID: 1627485680903235131}
-  - component: {fileID: 1627485680903235130}
   - component: {fileID: 1627485680903235133}
   m_Layer: 5
   m_Name: togInjectionSelected
@@ -1101,22 +1066,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485680903235130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485680903235135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485680903235133
 Animator:
   serializedVersion: 3
@@ -1379,7 +1328,6 @@ GameObject:
   - component: {fileID: 1627485681235717010}
   - component: {fileID: 1627485681235717013}
   - component: {fileID: 1627485681235717012}
-  - component: {fileID: 1627485681235717011}
   - component: {fileID: 1627485681235717008}
   m_Layer: 5
   m_Name: togCatharsis
@@ -1492,22 +1440,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485681235717011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485681235717014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485681235717008
 Animator:
   serializedVersion: 3
@@ -1539,7 +1471,6 @@ GameObject:
   - component: {fileID: 1627485681289953640}
   - component: {fileID: 1627485681289953643}
   - component: {fileID: 1627485681289953642}
-  - component: {fileID: 1627485681289953641}
   - component: {fileID: 1627485681289953638}
   m_Layer: 5
   m_Name: togPerfusion
@@ -1652,22 +1583,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485681289953641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485681289953644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485681289953638
 Animator:
   serializedVersion: 3
@@ -1924,7 +1839,6 @@ GameObject:
   - component: {fileID: 1627485681595873771}
   - component: {fileID: 1627485681595873770}
   - component: {fileID: 1627485681595873773}
-  - component: {fileID: 1627485681595873772}
   - component: {fileID: 1627485681595873775}
   m_Layer: 5
   m_Name: togGastrolavageSelected
@@ -2037,22 +1951,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485681595873772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485681595873745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485681595873775
 Animator:
   serializedVersion: 3
@@ -2527,7 +2425,6 @@ GameObject:
   - component: {fileID: 1627485681821492063}
   - component: {fileID: 1627485681821492062}
   - component: {fileID: 1627485681821492033}
-  - component: {fileID: 1627485681821492060}
   - component: {fileID: 1627485681821492061}
   m_Layer: 5
   m_Name: togGastrolavage
@@ -2640,22 +2537,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485681821492060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485681821492035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485681821492061
 Animator:
   serializedVersion: 3
@@ -2729,7 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
+  m_AllowSwitchOff: 1
 --- !u!114 &1627485681822701757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,7 +3269,6 @@ GameObject:
   - component: {fileID: 1627485682225659901}
   - component: {fileID: 1627485682225659900}
   - component: {fileID: 1627485682225659903}
-  - component: {fileID: 1627485682225659898}
   - component: {fileID: 1627485682225659899}
   m_Layer: 5
   m_Name: togInjection
@@ -3501,22 +3381,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485682225659898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485682225659873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485682225659899
 Animator:
   serializedVersion: 3
@@ -4039,7 +3903,6 @@ GameObject:
   - component: {fileID: 1627485682444413210}
   - component: {fileID: 1627485682444413213}
   - component: {fileID: 1627485682444413212}
-  - component: {fileID: 1627485682444413215}
   - component: {fileID: 1627485682444413214}
   m_Layer: 5
   m_Name: togEmeticSelected
@@ -4095,7 +3958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7cde7b11da8f3f643a21fdc0dcd1e5b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e23a4f3288a2aa24d82efe10d4e2d709, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4151,23 +4014,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
---- !u!114 &1627485682444413215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485682444413184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
+  m_IsOn: 0
 --- !u!95 &1627485682444413214
 Animator:
   serializedVersion: 3
@@ -4333,7 +4180,6 @@ GameObject:
   - component: {fileID: 1627485682466832927}
   - component: {fileID: 1627485682466832926}
   - component: {fileID: 1627485682466832897}
-  - component: {fileID: 1627485682466832896}
   - component: {fileID: 1627485682466832899}
   m_Layer: 5
   m_Name: togPerfusionSelected
@@ -4446,22 +4292,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
---- !u!114 &1627485682466832896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627485682466832901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnPerfusion)
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &1627485682466832899
 Animator:
   serializedVersion: 3
@@ -4707,7 +4537,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6052151891266502345}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99365205
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4747,7 +4577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: 0.00041082976}
+  m_AnchoredPosition: {x: 10, y: 0.000074259784}
   m_SizeDelta: {x: -10, y: 401.80145}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6052151890986849297
@@ -5299,29 +5129,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e94a9e8b5b5b547b458cc78b0ed121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  togMild: {fileID: 8508180242415259697}
-  togModerate: {fileID: 7354025780134055598}
-  togSevere: {fileID: 4393247551708023546}
   imgPatient: {fileID: 1627485681464750788}
   imgInstruction: {fileID: 1627485680981190155}
-  togEmetic: {fileID: 1627485680636353694}
-  togGastrolavage: {fileID: 1627485681821492033}
-  togCatharsis: {fileID: 1627485681235717012}
-  togInjection: {fileID: 1627485682225659903}
-  togPerfusion: {fileID: 1627485681289953642}
   tmpDescribe: {fileID: 1627485681639762983}
-  togEmeticSelected: {fileID: 1627485682444413212}
-  togGastrolavageSelected: {fileID: 1627485681595873773}
-  togCatharsisSelected: {fileID: 1627485680716535175}
-  togInjectionSelected: {fileID: 1627485680903235131}
-  togPerfusionSelected: {fileID: 1627485682466832897}
-  togSubmit: {fileID: 1627485682265629447}
   togConfirm: {fileID: 1627485680751670122}
+  togSubmit: {fileID: 1627485682265629447}
   _sprites:
   - {fileID: 21300000, guid: 1b86ebf77a74bda46b0575e22a28f2ad, type: 3}
   - {fileID: 21300000, guid: 018303fda83a7ce4285f0259f7bb0509, type: 3}
   - {fileID: 21300000, guid: e23a4f3288a2aa24d82efe10d4e2d709, type: 3}
   - {fileID: 21300000, guid: 7cde7b11da8f3f643a21fdc0dcd1e5b9, type: 3}
+  _leftToggles:
+  - {fileID: 8508180242415259697}
+  - {fileID: 7354025780134055598}
+  - {fileID: 4393247551708023546}
+  _topToggles:
+  - {fileID: 1627485680636353694}
+  - {fileID: 1627485681821492033}
+  - {fileID: 1627485681235717012}
+  - {fileID: 1627485682225659903}
+  - {fileID: 1627485681289953642}
+  _selectedSymptom: 0
+  _bottomToggles:
+  - {fileID: 1627485682444413212}
+  - {fileID: 1627485681595873773}
+  - {fileID: 1627485680716535175}
+  - {fileID: 1627485680903235131}
+  - {fileID: 1627485682466832897}
 --- !u!223 &98277077501496254
 Canvas:
   m_ObjectHideFlags: 0
@@ -5405,7 +5239,6 @@ GameObject:
   - component: {fileID: 8508180242415259696}
   - component: {fileID: 8508180242415259699}
   - component: {fileID: 8508180242415259698}
-  - component: {fileID: 8508180242415259700}
   - component: {fileID: 8508180242415259701}
   - component: {fileID: 8508180242415259697}
   m_Layer: 5
@@ -5472,22 +5305,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8508180242415259700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8508180242415259695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnSevere
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &8508180242415259701
 Animator:
   serializedVersion: 3
@@ -6270,9 +6087,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8508180243576797244}
   - component: {fileID: 8508180243576797246}
-  - component: {fileID: 8508180243576797245}
+  - component: {fileID: 4621363672377727988}
   m_Layer: 5
-  m_Name: Image
+  m_Name: riPatient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6305,7 +6122,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8508180243576797243}
   m_CullTransparentMesh: 0
---- !u!114 &8508180243576797245
+--- !u!114 &4621363672377727988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6314,7 +6131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8508180243576797243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -6324,16 +6141,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Texture: {fileID: 8400000, guid: 7f2662fce8f7cd84db9b4bc28eb88541, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &8508180243581100377
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,7 +6159,6 @@ GameObject:
   - component: {fileID: 8508180243581100378}
   - component: {fileID: 8508180243581100381}
   - component: {fileID: 8508180243581100380}
-  - component: {fileID: 8508180243581100382}
   - component: {fileID: 8508180243581100383}
   - component: {fileID: 7354025780134055598}
   m_Layer: 5
@@ -6412,22 +6225,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8508180243581100382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8508180243581100377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnSevere
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &8508180243581100383
 Animator:
   serializedVersion: 3
@@ -6505,7 +6302,6 @@ GameObject:
   - component: {fileID: 8508180243808572020}
   - component: {fileID: 8508180243808572023}
   - component: {fileID: 8508180243808572022}
-  - component: {fileID: 8508180243808572024}
   - component: {fileID: 8508180243808572025}
   - component: {fileID: 4393247551708023546}
   m_Layer: 5
@@ -6572,22 +6368,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8508180243808572024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8508180243808572019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: btnSevere
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Toggle
 --- !u!95 &8508180243808572025
 Animator:
   serializedVersion: 3

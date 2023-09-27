@@ -171,7 +171,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
                     "症状：肿已退尽，余症悉消，血压130/90毫米汞柱，尿常规，蛋白 (+)。" +
                     "\n\n医嘱：服桂附地黄丸以固疗效。", "结束三诊");
                 await _gamePanel.WaitTip("结束提示", "您已完成治疗！点击下方按钮返回主页", "返回主页");
-                await GameRoot.Instance.EndCokeFemaleClerk();
+                await GameRoot.Instance.EndCase();
             });
         }
     }

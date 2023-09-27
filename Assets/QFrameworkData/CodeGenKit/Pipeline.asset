@@ -20,16 +20,12 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: Pharmacy
+    ClassName: Patient
     Namespace: ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic
-      partial class Pharmacy : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Patient : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:91f2fdd7-cdbf-4db5-8a1c-f15ba742e349\r\nusing UnityEngine;\r\n\r\nnamespace
-      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic partial class Pharmacy\r\n\t{\r\n\r\n\t\tpublic
-      ProjectBase.NPCController FemaleClerk;\r\n\r\n\t\tpublic UnityEngine.GameObject
-      MaleStudent;\r\n\r\n\t\tpublic UnityEngine.Camera PharmacyCinemachine;\r\n\r\n\t\tpublic
-      ProjectBase.NPCController Companion;\r\n\r\n\t\tpublic UnityEngine.GameObject
-      FemaleClerkTarget;\r\n\r\n\t\tpublic UnityEngine.GameObject CompanionTarget;\r\n\r\n\t\tpublic
-      UnityEngine.GameObject CompanionSource;\r\n\r\n\t\tpublic UnityEngine.GameObject
-      FemaleClerkSource;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:efd2f850-8bab-4c18-b0a7-a19f76454837\r\nusing UnityEngine;\r\n\r\nnamespace
+      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic partial class Patient\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.GameObject PatientCameraPosition;\r\n\r\n\t\tpublic UnityEngine.Animator
+      Model;\r\n\r\n\t}\r\n}\r\n"

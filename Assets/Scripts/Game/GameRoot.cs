@@ -21,7 +21,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 
         public Action PauseGame = null;
         public Action ResumeGame = null;
-        public Func<UniTask> EndGame = null;
+
+        private ObjSelectCase.Case _nowCase;
 
         private void Awake()
         {
@@ -32,49 +33,46 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             }
         }
 
-        public async void StartCokeMaleStudent()
+        public async void StartCase(ObjSelectCase.Case nowCase)
         {
+            _nowCase = nowCase;
             await ExtensionFunction._topPanel.CloseEye();
             await ExtensionFunction.ClosePanelAsync();
             await ExtensionFunction.OpenPanelAsync<GamePanel>(GamePanel.Name);
-            task_MaleStudent.StartTask();
-            PauseGame = task_MaleStudent.PauseGame;
-            ResumeGame = task_MaleStudent.ResumeGame;
-            EndGame = EndCokeMaleStudent;
+            await drugStorage.StartDrugStorage(renderCamera);
+            await ExtensionFunction._topPanel.CloseEye();
+            UIKit.GetPanel<GamePanel>().DrugStorageAnimation = false;
+            switch (_nowCase)
+            {
+                case ObjSelectCase.Case.MaleStudent:
+                    task_MaleStudent.StartTask();
+                    PauseGame = task_MaleStudent.PauseGame;
+                    ResumeGame = task_MaleStudent.ResumeGame;
+                    break;
+                case ObjSelectCase.Case.FemaleClerk:
+                    task_FemaleClerk.StartTask();
+                    PauseGame = task_FemaleClerk.PauseGame;
+                    ResumeGame = task_FemaleClerk.ResumeGame;
+                    break;
+            }
         }
 
-        public async UniTask EndCokeMaleStudent()
+        public async UniTask EndCase()
         {
             PauseGame = null;
             ResumeGame = null;
-            EndGame = null;
             await ExtensionFunction._topPanel.CloseEye();
-            task_MaleStudent.StopGame();
-            task_MaleStudent.gameObject.SetActive(false);
-            await ExtensionFunction.ClosePanelAsync();
-            await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
-            await ExtensionFunction._topPanel.OpenEye();
-        }
-
-        public async void StartCokeFemaleClerk()
-        {
-            await ExtensionFunction._topPanel.CloseEye();
-            await ExtensionFunction.ClosePanelAsync();
-            await ExtensionFunction.OpenPanelAsync<GamePanel>(GamePanel.Name);
-            task_FemaleClerk.StartTask();
-            PauseGame = task_FemaleClerk.PauseGame;
-            ResumeGame = task_FemaleClerk.ResumeGame;
-            EndGame = EndCokeFemaleClerk;
-        }
-
-        public async UniTask EndCokeFemaleClerk()
-        {
-            PauseGame = null;
-            ResumeGame = null;
-            EndGame = null;
-            await ExtensionFunction._topPanel.CloseEye();
-            task_FemaleClerk.StopGame();
-            task_FemaleClerk.gameObject.SetActive(false);
+            switch (_nowCase)
+            {
+                case ObjSelectCase.Case.MaleStudent:
+                    task_MaleStudent.StopGame();
+                    task_MaleStudent.gameObject.SetActive(false);
+                    break;
+                case ObjSelectCase.Case.FemaleClerk:
+                    task_FemaleClerk.StopGame();
+                    task_FemaleClerk.gameObject.SetActive(false);
+                    break;
+            }
             await ExtensionFunction.ClosePanelAsync();
             await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
             await ExtensionFunction._topPanel.OpenEye();
@@ -82,12 +80,22 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 
         public void StartPharmacy(ObjSelectCase.Case caseType)
         {
-            Pharmacy.StartPharmacy(caseType);
+            pharmacy.StartPharmacy(caseType, renderCamera);
         }
 
         public void EndPharmacy()
         {
-            Pharmacy.gameObject.SetActive(false);
+            pharmacy.gameObject.SetActive(false);
+        }
+
+        public void StartPatient(Disease disease)
+        {
+            patient.StartPatient(renderCamera, disease);
+        }
+
+        public void EndPatient()
+        {
+            patient.gameObject.SetActive(false);
         }
 
         private void OnDestroy()

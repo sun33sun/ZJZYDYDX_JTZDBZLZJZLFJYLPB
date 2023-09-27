@@ -1,4 +1,4 @@
-// Generate Id:91f2fdd7-cdbf-4db5-8a1c-f15ba742e349
+// Generate Id:6c22f571-9e00-4f42-a9a1-2b8951d328c1
 using UnityEngine;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
@@ -10,8 +10,6 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 
 		public UnityEngine.GameObject MaleStudent;
 
-		public UnityEngine.Camera PharmacyCinemachine;
-
 		public ProjectBase.NPCController Companion;
 
 		public UnityEngine.GameObject FemaleClerkTarget;
@@ -21,6 +19,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 		public UnityEngine.GameObject CompanionSource;
 
 		public UnityEngine.GameObject FemaleClerkSource;
+
+		public UnityEngine.GameObject PharmacyCameraPosition;
 
 	}
 }

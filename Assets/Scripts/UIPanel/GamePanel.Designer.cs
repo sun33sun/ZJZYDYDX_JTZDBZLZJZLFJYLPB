@@ -5,11 +5,13 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:26e6e84b-46fe-4640-95ed-c037abdc17ab
+	// Generate Id:6788a33f-a90d-4a01-ba7b-ee88907cf0bd
 	public partial class GamePanel
 	{
 		public const string Name = "GamePanel";
 		
+		[SerializeField]
+		public UnityEngine.UI.RawImage riDrugStorage;
 		[SerializeField]
 		public RectTransform objQuestion;
 		[SerializeField]
@@ -40,17 +42,12 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		public UnityEngine.UI.Button btnTip;
 		[SerializeField]
 		public TMPro.TextMeshProUGUI tmpBtnTip;
-		[SerializeField]
-		public UnityEngine.RectTransform RightDrugGroup;
-		[SerializeField]
-		public ProjectBase.HorizontalSegmentation RightDrugParent;
-		[SerializeField]
-		public UnityEngine.UI.Button btnSubmit;
 		
 		private GamePanelData mPrivateData = null;
 		
 		protected override void ClearUIComponents()
 		{
+			riDrugStorage = null;
 			objQuestion = null;
 			svQuestion = null;
 			btnConfirmQuestion = null;
@@ -66,9 +63,6 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			tmpTip = null;
 			btnTip = null;
 			tmpBtnTip = null;
-			RightDrugGroup = null;
-			RightDrugParent = null;
-			btnSubmit = null;
 			
 			mData = null;
 		}

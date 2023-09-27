@@ -1,4 +1,4 @@
-// Generate Id:5db71488-1bf1-4ba4-8d85-beb3dabaa478
+// Generate Id:bae2e473-7a3d-4180-bfa7-cce525b7bac1
 using UnityEngine;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
@@ -10,7 +10,13 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 
 		public ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Task_FemaleClerk task_FemaleClerk;
 
-		public ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Pharmacy Pharmacy;
+		public ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Pharmacy pharmacy;
+
+		public UnityEngine.Camera renderCamera;
+
+		public ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.DrugStorage drugStorage;
+
+		public ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Patient patient;
 
 	}
 }

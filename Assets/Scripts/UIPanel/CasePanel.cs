@@ -31,15 +31,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
             await objFirstVisit.btnSubmit.OnClickAsync(_tokenDestroy);
             await selectDrug.ShowAsync();
             await selectDrug.imgInputWeight.btnSubmit.OnClickAsync(_tokenDestroy);
-            switch (objSelectCase.NowCase)
-            {
-                case ObjSelectCase.Case.MaleStudent:
-                    GameRoot.Instance.StartCokeMaleStudent();
-                    break;
-                case ObjSelectCase.Case.FemaleClerk:
-                    GameRoot.Instance.StartCokeFemaleClerk();
-                    break;
-            }
+            
+            GameRoot.Instance.StartCase(objSelectCase.NowCase);
         }
 
         protected override void OnOpen(IUIData uiData = null)

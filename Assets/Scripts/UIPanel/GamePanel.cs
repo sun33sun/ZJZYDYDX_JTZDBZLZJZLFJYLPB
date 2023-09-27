@@ -16,8 +16,6 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
     public partial class GamePanel : UIPanel
     {
-        private List<InputDrugWeight> _inputDrugWeights = new List<InputDrugWeight>();
-        [SerializeField] private InputDrugWeight _inputDrugWeightPrefab;
         private CancellationToken _token;
 
         protected override void OnInit(IUIData uiData = null)
@@ -59,6 +57,11 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
         {
         }
 
+        public bool DrugStorageAnimation
+        {
+            set { riDrugStorage.gameObject.SetActive(value); }
+        }
+
         public async UniTask WaitQuestion(string questionPath)
         {
             ExtensionFunction._topPanel.imgMask.gameObject.SetActive(true);
@@ -66,7 +69,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
             await objQuestion.ShowAsync();
             ExtensionFunction._topPanel.imgMask.gameObject.SetActive(false);
             await UniTask.WaitUntil(() => !objQuestion.gameObject.activeInHierarchy, cancellationToken: _token);
-            
+
             await UniTask.WaitForSeconds(0.2f, cancellationToken: _token);
         }
 
@@ -93,7 +96,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
             await UniTask.WaitForSeconds(0.2f, cancellationToken: _token);
             await objClock.HideAsync();
             objArraw.rotation = Quaternion.identity;
-            
+
             await UniTask.WaitForSeconds(0.2f, cancellationToken: _token);
             ExtensionFunction._topPanel.imgMask.gameObject.SetActive(false);
         }
@@ -107,7 +110,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
             await objTip.ShowAsync();
             ExtensionFunction._topPanel.imgMask.gameObject.SetActive(false);
             await UniTask.WaitUntil(() => !objTip.gameObject.activeInHierarchy, cancellationToken: _token);
-            
+
             await UniTask.WaitForSeconds(0.2f, cancellationToken: _token);
         }
     }

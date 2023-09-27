@@ -37,7 +37,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 				if (GameRoot.Instance.PauseGame != null)
 				{
 					imgBackMain.HideSync();
-					await GameRoot.Instance.EndGame();
+					await GameRoot.Instance.EndCase();
 				}
 				else
 				{

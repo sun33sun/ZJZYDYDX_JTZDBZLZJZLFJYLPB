@@ -169,7 +169,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
                     "\n\n医嘱：温疟伤阴，吐泻竭液，阴亡阳脱，故首先回阳救脱，投四逆加人参汤；阳问脉复，继用生脉散，益气养阴以善后。", 
                     "结束二诊");
                 await _gamePanel.WaitTip("结束提示", "您已完成治疗！点击下方按钮返回主页", "返回主页");
-                await GameRoot.Instance.EndCokeMaleStudent();
+                await GameRoot.Instance.EndCase();
             });
         }
     }

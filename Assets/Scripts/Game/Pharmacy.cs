@@ -10,18 +10,24 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
     public partial class Pharmacy : ViewController
     {
         private CancellationTokenSource _ctsEnable;
+        private Transform _cameraTrans;
 
-        public async void StartPharmacy(ObjSelectCase.Case caseType)
+        public async void StartPharmacy(ObjSelectCase.Case caseType, Camera camera)
         {
             if (this.GetCancellationTokenOnDestroy().IsCancellationRequested)
                 return;
             gameObject.SetActive(true);
+            _cameraTrans = camera.transform;
+            _cameraTrans.gameObject.SetActive(true);
+            _cameraTrans.rotation = PharmacyCameraPosition.transform.rotation;
+            _cameraTrans.position = PharmacyCameraPosition.transform.position;
+            Companion.transform.rotation = CompanionSource.transform.rotation;
+            Companion.transform.position = CompanionSource.transform.position;
             switch (caseType)
             {
                 case ObjSelectCase.Case.MaleStudent:
                     MaleStudent.gameObject.SetActive(true);
-                    Companion.transform.position = CompanionSource.transform.position;
-                    Companion.transform.rotation = CompanionSource.transform.rotation;
+                    await UniTask.Yield();
                     try
                     {
                         await Companion.WalkTo(CompanionTarget.transform, _ctsEnable.Token);
@@ -30,13 +36,14 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
                     {
                         print(e);
                     }
+
                     break;
                 case ObjSelectCase.Case.FemaleClerk:
                     FemaleClerk.gameObject.SetActive(true);
-                    FemaleClerk.transform.position = FemaleClerkSource.transform.position;
                     FemaleClerk.transform.rotation = FemaleClerkSource.transform.rotation;
-                    Companion.transform.rotation = CompanionSource.transform.rotation;
-                    Companion.transform.position = CompanionSource.transform.position;
+                    FemaleClerk.transform.position = FemaleClerkSource.transform.position;
+                    FemaleClerk.PlayAnim("Idle");
+                    await UniTask.Yield();
                     try
                     {
                         Companion.WalkTo(CompanionTarget.transform, _ctsEnable.Token).Forget();
@@ -47,6 +54,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
                     {
                         print(e);
                     }
+
                     break;
             }
         }
@@ -56,6 +64,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             _ctsEnable.Cancel();
             FemaleClerk.gameObject.SetActive(false);
             MaleStudent.gameObject.SetActive(false);
+            _cameraTrans.gameObject.SetActive(false);
         }
 
         private void OnEnable()

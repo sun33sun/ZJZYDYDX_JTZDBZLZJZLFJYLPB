@@ -23,7 +23,7 @@ namespace ProjectBase
             _agent.isStopped = false;
             _agent.SetDestination(target.position);
             _animator.Play("Walk");
-            await UniTask.WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance,
+            await UniTask.WaitUntil(() => Mathf.Abs(_agent.stoppingDistance - _agent.remainingDistance) < 0.05f,
                 cancellationToken: token);
             _animator.Play("Idle");
             _agent.isStopped = true;

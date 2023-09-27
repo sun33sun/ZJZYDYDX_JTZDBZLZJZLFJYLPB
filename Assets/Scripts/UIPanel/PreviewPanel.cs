@@ -1,128 +1,141 @@
+using System;
 using System.Collections.Generic;
 using ProjectBase;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	public class PreviewPanelData : UIPanelData
-	{
-	}
-	public partial class PreviewPanel : UIPanel
-	{
-		[SerializeField] private List<Sprite> _sprites;
-		
-		protected override void OnInit(IUIData uiData = null)
-		{
-			mData = uiData as PreviewPanelData ?? new PreviewPanelData();
-			
-			InitLeft();
-			InitIntroduction();
-			InitSelected();
-		}
+    public enum Disease
+    {
+        Mild,
+        Moderate,
+        Severe
+    }
 
-		void InitLeft()
-		{
-			Image imgMild = togMild.GetComponent<Image>();
-			togMild.AddAwaitAction(isOn =>
-			{
-				imgMild.sprite = isOn ? _sprites[1] : _sprites[0];
-			});
-			
-			Image imgModerate = togModerate.GetComponent<Image>();
-			togModerate.AddAwaitAction(isOn =>
-			{
-				imgModerate.sprite = isOn ? _sprites[1] : _sprites[0];
-			});
-			
-			Image imgSevere = togSevere.GetComponent<Image>();
-			togSevere.AddAwaitAction(isOn =>
-			{
-				imgSevere.sprite = isOn ? _sprites[1] : _sprites[0];
-			});
-		}
+    [System.Flags]
+    public enum Symptom
+    {
+        None = 0,
+        Emetic = 1,
+        Gastrolavage = 2,
+        Catharsis = 4,
+        Injection = 8,
+        Perfusion = 16
+    }
 
-		void InitIntroduction()
-		{
-			Image imgEmetic = togEmetic.GetComponent<Image>();
-			togEmetic.AddAwaitAction(isOn =>
-			{
-				imgEmetic.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgGastrolavage = togGastrolavage.GetComponent<Image>();
-			togGastrolavage.AddAwaitAction(isOn =>
-			{
-				imgGastrolavage.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgCatharsis = togCatharsis.GetComponent<Image>();
-			togCatharsis.AddAwaitAction(isOn =>
-			{
-				imgCatharsis.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgInjection = togInjection.GetComponent<Image>();
-			togInjection.AddAwaitAction(isOn =>
-			{
-				imgInjection.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgPerfusion = togPerfusion.GetComponent<Image>();
-			togPerfusion.AddAwaitAction(isOn =>
-			{
-				imgPerfusion.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image imgEmeticSelected = togEmeticSelected.GetComponent<Image>();
-			togEmeticSelected.AddAwaitAction(isOn =>
-			{
-				imgEmeticSelected.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-		}
+    public class PreviewPanelData : UIPanelData
+    {
+    }
 
-		void InitSelected()
-		{
-			Image  imgGastrolavageSelected = togGastrolavageSelected.GetComponent<Image>();
-			togGastrolavageSelected.AddAwaitAction(isOn =>
-			{
-				imgGastrolavageSelected.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgCatharsisSelected = togCatharsisSelected.GetComponent<Image>();
-			togCatharsisSelected.AddAwaitAction(isOn =>
-			{
-				imgCatharsisSelected.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgInjectionSelected = togInjectionSelected.GetComponent<Image>();
-			togInjectionSelected.AddAwaitAction(isOn =>
-			{
-				imgInjectionSelected.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-			
-			Image  imgPerfusionSelected = togPerfusionSelected.GetComponent<Image>();
-			togPerfusionSelected.AddAwaitAction(isOn =>
-			{
-				imgPerfusionSelected.sprite = isOn ? _sprites[3] : _sprites[2];
-			});
-		}
-		
-		protected override void OnOpen(IUIData uiData = null)
-		{
-		}
-		
-		protected override void OnShow()
-		{
-		}
-		
-		protected override void OnHide()
-		{
-		}
-		
-		protected override void OnClose()
-		{
-		}
-	}
+    public partial class PreviewPanel : UIPanel
+    {
+        [SerializeField] private List<Sprite> _sprites;
+
+        Disease _nowDisease = Disease.Mild;
+        [SerializeField] List<Toggle> _leftToggles;
+
+        Symptom _introductionSymptom = Symptom.Emetic;
+        [SerializeField] List<Toggle> _topToggles;
+
+        public Symptom _selectedSymptom = Symptom.Emetic;
+        [SerializeField] List<Toggle> _bottomToggles;
+
+        protected override void OnInit(IUIData uiData = null)
+        {
+            mData = uiData as PreviewPanelData ?? new PreviewPanelData();
+
+            GameRoot.Instance.StartPatient(_nowDisease);
+            InitLeft();
+            InitIntroduction();
+            InitSelected();
+        }
+
+        void InitLeft()
+        {
+            for (var i = 0; i < _leftToggles.Count; i++)
+            {
+                int index = i;
+                Image img = _leftToggles[i].GetComponent<Image>();
+                Disease disease = (Disease)index;
+                _leftToggles[i].AddAwaitAction(isOn =>
+                {
+                    if (isOn)
+                    {
+                        _nowDisease = disease;
+                        GameRoot.Instance.StartPatient(_nowDisease);
+                        img.sprite = _sprites[1];
+                    }
+                    else
+                    {
+                        img.sprite = _sprites[0];
+                    }
+                });
+            }
+        }
+
+        void InitIntroduction()
+        {
+            for (var i = 0; i < _topToggles.Count; i++)
+            {
+                Image img = _topToggles[i].GetComponent<Image>();
+                Symptom symptom = (Symptom)ExtensionFunction.Pow2(i);
+                _topToggles[i].AddAwaitAction(isOn =>
+                {
+                    if (isOn)
+                    {
+                        _introductionSymptom = symptom;
+                        img.sprite = _sprites[3];
+                    }
+                    else
+                    {
+                        img.sprite = _sprites[2];
+                    }
+                });
+            }
+        }
+
+        void InitSelected()
+        {
+            for (var i = 0; i < _bottomToggles.Count; i++)
+            {
+                Image img = _bottomToggles[i].GetComponent<Image>();
+                int value = ExtensionFunction.Pow2(i);
+                _bottomToggles[i].AddAwaitAction(isOn =>
+                {
+                    int nowValue = (int)_selectedSymptom;
+                    if (isOn)
+                    {
+                        nowValue += value;
+                        img.sprite = _sprites[3];
+                    }
+                    else
+                    {
+                        nowValue -= value;
+                        img.sprite = _sprites[2];
+                    }
+                    _selectedSymptom = (Symptom)nowValue;                    
+                });
+            }
+        }
+
+        protected override void OnOpen(IUIData uiData = null)
+        {
+        }
+
+        protected override void OnShow()
+        {
+        }
+
+        protected override void OnHide()
+        {
+            GameRoot.Instance.EndPatient();
+        }
+
+        protected override void OnClose()
+        {
+        }
+    }
 }
