@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using ProjectBase;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +56,9 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
         void InitLeft()
         {
+            RectTransform rectHeart = imgHeart.transform as RectTransform;
+            rectHeart.DOAnchorPosX(-700, 4).SetLoops(-1,LoopType.Restart);
+            
             for (var i = 0; i < _leftToggles.Count; i++)
             {
                 int index = i;
@@ -65,6 +69,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
                     if (isOn)
                     {
                         _nowDisease = disease;
+                        imgHeart.sprite = _sprites[index + 4];
+                        rectHeart.DORestart();
                         GameRoot.Instance.StartPatient(_nowDisease);
                         img.sprite = _sprites[1];
                     }

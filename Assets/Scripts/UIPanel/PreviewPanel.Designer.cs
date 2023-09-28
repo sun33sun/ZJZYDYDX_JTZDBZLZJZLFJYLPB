@@ -5,11 +5,13 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:2608c848-be74-4390-97cc-9461d2370bfe
+	// Generate Id:87d02f23-9362-4932-afef-076d7456ab3b
 	public partial class PreviewPanel
 	{
 		public const string Name = "PreviewPanel";
 		
+		[SerializeField]
+		public UnityEngine.UI.Image imgHeart;
 		[SerializeField]
 		public UnityEngine.UI.Image imgPatient;
 		[SerializeField]
@@ -25,6 +27,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		
 		protected override void ClearUIComponents()
 		{
+			imgHeart = null;
 			imgPatient = null;
 			imgInstruction = null;
 			tmpDescribe = null;
