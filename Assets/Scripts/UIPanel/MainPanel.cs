@@ -23,7 +23,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			btnPreview.AddAwaitAction(async () =>
 			{
 				await ExtensionFunction.ClosePanelAsync();
-				await ExtensionFunction.OpenPanelAsync<PreviewPanel>(PreviewPanel.Name);
+				await ExtensionFunction.OpenPanelAsync<PreviewPanel>(PreviewPanel.Name, Main.Instance.PreviewPanelData);
 			});
 			btnCase.AddAwaitAction(async () =>
 			{
@@ -41,20 +41,20 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 				await ExtensionFunction.OpenPanelAsync<ReportPanel>(ReportPanel.Name);
 			});
 		}
-		
+
 		protected override void OnOpen(IUIData uiData = null)
 		{
 		}
-		
+
 		protected override void OnShow()
 		{
 			UIKit.GetPanel<BottomPanel>().SwitchGroup(0);
 		}
-		
+
 		protected override void OnHide()
 		{
 		}
-		
+
 		protected override void OnClose()
 		{
 		}

@@ -26,8 +26,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 			_cameraTrans = camera.transform;
 			_cameraTrans.rotation = DrugStorageCameraPosition.transform.rotation;
 			_cameraTrans.position = DrugStorageCameraPosition.transform.position;
-			await ExtensionFunction._topPanel.OpenEye();
 			_director.Play();
+			await ExtensionFunction._topPanel.OpenEye();
 			await UniTask.WaitUntil(() => isEnd);
 		}
 		

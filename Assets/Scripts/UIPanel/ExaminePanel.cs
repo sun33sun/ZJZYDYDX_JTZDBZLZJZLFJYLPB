@@ -15,7 +15,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
         {
             mData = uiData as ExaminePanelData ?? new ExaminePanelData();
             btnSubmit.AddAwaitAction(async () => await imgDoubleConfirm.ShowAsync());
-            btnConfirm.onClick.AddListener(()=>ExtensionFunction._topPanel.btnDoubleConfirm.onClick.Invoke());
+            btnConfirm.AddAwaitAction(ExtensionFunction._topPanel.DoubleConfirmBackMain);
 
             btnDoubleCancel.AddAwaitAction(async () => await imgDoubleConfirm.HideAsync());
 

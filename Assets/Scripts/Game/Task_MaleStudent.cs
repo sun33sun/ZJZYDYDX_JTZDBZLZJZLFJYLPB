@@ -25,6 +25,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
         {
             gameObject.SetActive(true);
             _gamePanel = UIKit.GetPanel<GamePanel>();
+            
             await UniTask.WaitForSeconds(1, cancellationToken: _token);
             await ExtensionFunction._topPanel.OpenEye();
             _director.Play();

@@ -1059,7 +1059,6 @@ GameObject:
   - component: {fileID: 6416856197833921223}
   - component: {fileID: 6416856197833921222}
   - component: {fileID: 1472473373145322324}
-  - component: {fileID: -2638748746514274750}
   m_Layer: 5
   m_Name: PraticePanel
   m_TagString: Untagged
@@ -1156,28 +1155,6 @@ MonoBehaviour:
   imgTitle: {fileID: 3382995251559164480}
   imgWait: {fileID: -3856727501452894266}
   imgTip: {fileID: -2180951441228220034}
---- !u!114 &-2638748746514274750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6416856197833921220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
 --- !u!1 &6416856198006510562
 GameObject:
   m_ObjectHideFlags: 0

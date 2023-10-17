@@ -49,11 +49,11 @@ namespace ProjectBase
             };
         }
 
-        public static IEnumerator UnrecordOpenPanelAsync<T>(string prefabName, IUIData uiData = null)
+        public static IEnumerator UnrecordOpenPanelAsync<T>(string prefabName)
             where T : UIPanel
         {
-            yield return UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel, uiData, prefabName: UI + prefabName);
-            UIKit.GetPanel<T>().GetComponent<Canvas>().worldCamera = UIRoot.Instance.UICamera;
+            yield return UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel,prefabName: UI + prefabName);
+            // UIKit.GetPanel<T>().GetComponent<Canvas>().worldCamera = UIRoot.Instance.UICamera;
         }
 
         /// <summary>
@@ -169,14 +169,12 @@ namespace ProjectBase
             await panel.GetComponent<CanvasGroup>().DOFade(1, ShowTime).AsyncWaitForCompletion();
         }
 
-        public static async UniTask OpenPanelAsync<T>(string panelName) where T : UIPanel
+        public static async UniTask OpenPanelAsync<T>(string panelName,IUIData uiData = null) where T : UIPanel
         {
             if (NowPanel == null && panelName.IsNullOrEmpty())
                 return;
-            await UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel, prefabName: UI + panelName).ToUniTask(MonoMgr.GetInstance().Controller);
+            await UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel,uiData, prefabName: UI + panelName).ToUniTask(MonoMgr.GetInstance().Controller);
             NowPanel = UIKit.GetPanel<T>();
-            Canvas canvas = NowPanel.GetComponent<Canvas>();
-            canvas.worldCamera = UIRoot.Instance.Camera;
             await NowPanel.GetComponent<CanvasGroup>().DOFade(1, ShowTime).AsyncWaitForCompletion();
         }
 

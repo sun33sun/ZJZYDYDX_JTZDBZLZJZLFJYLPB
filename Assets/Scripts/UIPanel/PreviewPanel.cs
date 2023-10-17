@@ -1,147 +1,230 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
 using DG.Tweening;
 using ProjectBase;
+using ProjectBase.EnumExtension;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using UnityEngine.Serialization;
 using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
+using System.Linq;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-    public enum Disease
-    {
-        Mild,
-        Moderate,
-        Severe
-    }
+	public enum Disease
+	{
+		[Description("轻度")] Mild,
+		[Description("中度")] Moderate,
+		[Description("重度")] Severe,
+	}
 
-    [System.Flags]
-    public enum Symptom
-    {
-        None = 0,
-        Emetic = 1,
-        Gastrolavage = 2,
-        Catharsis = 4,
-        Injection = 8,
-        Perfusion = 16
-    }
+	[System.Flags]
+	public enum Symptom
+	{
+		[Description("未选择")] None = 0,
+		[Description("催吐")] Emetic = 1,
+		[Description("洗胃")] Gastrolavage = 2,
+		[Description("导泄")] Catharsis = 4,
+		[Description("静脉注射")] Injection = 8,
+		[Description("血液灌流")] Perfusion = 16
+	}
 
-    public class PreviewPanelData : UIPanelData
-    {
-    }
+	public class PreviewPanelData : UIPanelData
+	{
+		public bool isSubmit = false;
+		public bool isRight = false;
+		public Disease rightDisease;
+	}
 
-    public partial class PreviewPanel : UIPanel
-    {
-        [SerializeField] private List<Sprite> _sprites;
+	public partial class PreviewPanel : UIPanel
+	{
+		[SerializeField] private List<Sprite> _sprites;
 
-        Disease _nowDisease = Disease.Mild;
-        [SerializeField] List<Toggle> _leftToggles;
+		Disease _selectedDisease = Disease.Mild;
+		[SerializeField] List<Toggle> _leftToggles;
 
-        Symptom _introductionSymptom = Symptom.Emetic;
-        [SerializeField] List<Toggle> _topToggles;
+		Symptom _introductionSymptom = Symptom.None;
+		[SerializeField] List<Toggle> _topToggles;
 
-        public Symptom _selectedSymptom = Symptom.Emetic;
-        [SerializeField] List<Toggle> _bottomToggles;
+		public Symptom _selectedSymptom = Symptom.None;
+		[SerializeField] List<Toggle> _bottomToggles;
+		[SerializeField] List<Symptom> _rightSymptoms;
+		//List<Symptom> _rightSymptoms = new List<Symptom>()
+		//{
+		//	Symptom.Emetic | Symptom.Gastrolavage | Symptom.Catharsis,
+		//	Symptom.Emetic | Symptom.Gastrolavage | Symptom.Catharsis | Symptom.Injection |Symptom.Perfusion,
+		//	Symptom.Emetic | Symptom.Gastrolavage | Symptom.Catharsis | Symptom.Injection |Symptom.Perfusion,
+		//};
 
-        protected override void OnInit(IUIData uiData = null)
-        {
-            mData = uiData as PreviewPanelData ?? new PreviewPanelData();
+		protected override void OnInit(IUIData uiData = null)
+		{
+			mData = uiData as PreviewPanelData ?? new PreviewPanelData();
 
-            GameRoot.Instance.StartPatient(_nowDisease);
-            InitLeft();
-            InitIntroduction();
-            InitSelected();
-        }
+			GameRoot.Instance.StartPatient(mData.rightDisease);
+			InitTopToggle();
+			btnConfirm.AddAwaitAction(ExtensionFunction._topPanel.DoubleConfirmBackMain);
+			InitAnim();
+			if (mData.isSubmit)
+			{
+				LoadSubmitedPanel();
+				return;
+			}
 
-        void InitLeft()
-        {
-            RectTransform rectHeart = imgHeart.transform as RectTransform;
-            rectHeart.DOAnchorPosX(-700, 4).SetLoops(-1,LoopType.Restart);
-            
-            for (var i = 0; i < _leftToggles.Count; i++)
-            {
-                int index = i;
-                Image img = _leftToggles[i].GetComponent<Image>();
-                Disease disease = (Disease)index;
-                _leftToggles[i].AddAwaitAction(isOn =>
-                {
-                    if (isOn)
-                    {
-                        _nowDisease = disease;
-                        imgHeart.sprite = _sprites[index + 4];
-                        rectHeart.DORestart();
-                        GameRoot.Instance.StartPatient(_nowDisease);
-                        img.sprite = _sprites[1];
-                    }
-                    else
-                    {
-                        img.sprite = _sprites[0];
-                    }
-                });
-            }
-        }
+			InitLeftToggle();
+			InitBottomToggle();
+			btnSubmit.AddAwaitAction(async () =>
+			{
+				if (IsRightResult())
+				{
+					mData.isRight = true;
+					await objTip.ShowAsync();
+				}
+				else
+				{
+					btnSubmit.gameObject.SetActive(false);
+					btnConfirm.gameObject.SetActive(true);
+					ShowAnalysis();
+					SetBottomAndLeftToggleInteractable(false);
+				}
+				mData.isSubmit = true;
+			});
+			btnTip.AddAwaitAction(ExtensionFunction._topPanel.DoubleConfirmBackMain);
+		}
 
-        void InitIntroduction()
-        {
-            for (var i = 0; i < _topToggles.Count; i++)
-            {
-                Image img = _topToggles[i].GetComponent<Image>();
-                Symptom symptom = (Symptom)ExtensionFunction.Pow2(i);
-                _topToggles[i].AddAwaitAction(isOn =>
-                {
-                    if (isOn)
-                    {
-                        _introductionSymptom = symptom;
-                        img.sprite = _sprites[3];
-                    }
-                    else
-                    {
-                        img.sprite = _sprites[2];
-                    }
-                });
-            }
-        }
+		void LoadSubmitedPanel()
+		{
+			if (!mData.isRight)
+				ShowAnalysis();
+			btnSubmit.gameObject.SetActive(false);
+			btnConfirm.gameObject.SetActive(true);
+			SetBottomAndLeftToggleInteractable(false);
+		}
 
-        void InitSelected()
-        {
-            for (var i = 0; i < _bottomToggles.Count; i++)
-            {
-                Image img = _bottomToggles[i].GetComponent<Image>();
-                int value = ExtensionFunction.Pow2(i);
-                _bottomToggles[i].AddAwaitAction(isOn =>
-                {
-                    int nowValue = (int)_selectedSymptom;
-                    if (isOn)
-                    {
-                        nowValue += value;
-                        img.sprite = _sprites[3];
-                    }
-                    else
-                    {
-                        nowValue -= value;
-                        img.sprite = _sprites[2];
-                    }
-                    _selectedSymptom = (Symptom)nowValue;                    
-                });
-            }
-        }
+		void SetBottomAndLeftToggleInteractable(bool interactable)
+		{
+			foreach (var item in _bottomToggles)
+				item.interactable = interactable;
+			foreach (var item in _leftToggles)
+			{
+				item.interactable = interactable;
+			}
 
-        protected override void OnOpen(IUIData uiData = null)
-        {
-        }
+		}
 
-        protected override void OnShow()
-        {
-        }
+		bool IsRightResult()
+		{
+			Symptom rightSymptom = _rightSymptoms[mData.rightDisease.GetHashCode()];
+			bool isRightSymptom = rightSymptom.Compare(_selectedSymptom);
 
-        protected override void OnHide()
-        {
-            GameRoot.Instance.EndPatient();
-        }
+			bool isRightDisease = _selectedDisease == mData.rightDisease;
 
-        protected override void OnClose()
-        {
-        }
-    }
+			return isRightSymptom && isRightDisease;
+		}
+
+		void ShowAnalysis()
+		{
+			IEnumerable<string> symptoms = _rightSymptoms[mData.rightDisease.GetHashCode()].Split().Descriptions();
+			StringBuilder sb = new StringBuilder();
+			foreach (var symptom in symptoms)
+				sb.Append("【").Append(symptom).Append("】、");
+			sb.Remove(sb.Length - 1, 1);
+
+			tmpAnalysis.text = $"回答错误：患者应为{mData.rightDisease.Description()} ; 治疗方案应为 {sb}";
+		}
+
+		void InitAnim()
+		{
+			RectTransform rectHeart = imgHeart.transform as RectTransform;
+			rectHeart.DOAnchorPosX(-700, 4).SetLoops(-1, LoopType.Restart);
+			imgHeart.sprite = _sprites[(int)mData.rightDisease + 4];
+		}
+
+		void InitLeftToggle()
+		{
+
+
+			for (var i = 0; i < _leftToggles.Count; i++)
+			{
+				int index = i;
+				Image img = _leftToggles[i].GetComponent<Image>();
+				Disease disease = (Disease)index;
+				_leftToggles[i].AddAwaitAction(isOn =>
+				{
+					if (isOn)
+					{
+						_selectedDisease = disease;
+						img.sprite = _sprites[1];
+					}
+					else
+					{
+						img.sprite = _sprites[0];
+					}
+				});
+			}
+		}
+
+		void InitTopToggle()
+		{
+			for (var i = 0; i < _topToggles.Count; i++)
+			{
+				Image img = _topToggles[i].GetComponent<Image>();
+				Symptom symptom = (Symptom)ExtensionFunction.Pow2(i);
+				_topToggles[i].AddAwaitAction(isOn =>
+				{
+					if (isOn)
+					{
+						_introductionSymptom = symptom;
+						img.sprite = _sprites[3];
+					}
+					else
+					{
+						img.sprite = _sprites[2];
+					}
+				});
+			}
+		}
+
+		void InitBottomToggle()
+		{
+			for (var i = 0; i < _bottomToggles.Count; i++)
+			{
+				Image img = _bottomToggles[i].GetComponent<Image>();
+				Symptom value = (Symptom)ExtensionFunction.Pow2(i);
+				_bottomToggles[i].AddAwaitAction(isOn =>
+				{
+					if (isOn)
+					{
+						_selectedSymptom = _selectedSymptom | value;
+						img.sprite = _sprites[3];
+					}
+					else
+					{
+						_selectedSymptom = _selectedSymptom & (~value);
+						img.sprite = _sprites[2];
+					}
+
+				});
+			}
+		}
+
+		protected override void OnOpen(IUIData uiData = null)
+		{
+		}
+
+		protected override void OnShow()
+		{
+		}
+
+		protected override void OnHide()
+		{
+			GameRoot.Instance.EndPatient();
+		}
+
+		protected override void OnClose()
+		{
+		}
+	}
 }

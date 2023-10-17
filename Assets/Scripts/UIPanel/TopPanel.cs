@@ -32,20 +32,25 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 				await imgBackMain.HideAsync();
 				GameRoot.Instance.ResumeGame?.Invoke();
 			});
-			btnDoubleConfirm.AddAwaitAction(async ()=>
+			btnDoubleConfirm.AddAwaitAction(DoubleConfirmBackMain);
+		}
+
+		/// <summary>
+		/// 再次确认返回主页面
+		/// </summary>
+		public async UniTask DoubleConfirmBackMain()
+		{
+			if (GameRoot.Instance.PauseGame != null)
 			{
-				if (GameRoot.Instance.PauseGame != null)
-				{
-					imgBackMain.HideSync();
-					await GameRoot.Instance.EndCase();
-				}
-				else
-				{
-					await imgBackMain.HideAsync();
-					await ExtensionFunction.ClosePanelAsync();
-					await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
-				}
-			});
+				imgBackMain.HideSync();
+				await GameRoot.Instance.EndCase();
+			}
+			else
+			{
+				await imgBackMain.HideAsync();
+				await ExtensionFunction.ClosePanelAsync();
+				await ExtensionFunction.OpenPanelAsync<MainPanel>(MainPanel.Name);
+			}
 		}
 		
 		protected override void OnOpen(IUIData uiData = null)

@@ -1,4 +1,4 @@
-// Generate Id:52024f00-0e56-44f6-be3a-b89ff6530e8d
+// Generate Id:fccafc65-2346-45dc-9bc7-8ebd7cacd4f5
 using UnityEngine;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
@@ -17,6 +17,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 		public UnityEngine.GameObject OpenMedicineBag;
 
 		public UnityEngine.GameObject Kettle;
+
+		public Cinemachine.CinemachineVirtualCamera SoakCamera;
 
 	}
 }

@@ -20,12 +20,15 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: Patient
+    ClassName: GameRoot
     Namespace: ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic
-      partial class Patient : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class GameRoot : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:efd2f850-8bab-4c18-b0a7-a19f76454837\r\nusing UnityEngine;\r\n\r\nnamespace
-      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic partial class Patient\r\n\t{\r\n\r\n\t\tpublic
-      UnityEngine.GameObject PatientCameraPosition;\r\n\r\n\t\tpublic UnityEngine.Animator
-      Model;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:e270f721-4eee-4c4a-9dd8-a6e627350304\r\nusing UnityEngine;\r\n\r\nnamespace
+      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic partial class GameRoot\r\n\t{\r\n\r\n\t\tpublic
+      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Task_MaleStudent task_MaleStudent;\r\n\r\n\t\tpublic
+      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Task_FemaleClerk task_FemaleClerk;\r\n\r\n\t\tpublic
+      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Pharmacy pharmacy;\r\n\r\n\t\tpublic UnityEngine.Camera
+      renderCamera;\r\n\r\n\t\tpublic ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.DrugStorage
+      drugStorage;\r\n\r\n\t\tpublic ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Patient patient;\r\n\r\n\t}\r\n}\r\n"
