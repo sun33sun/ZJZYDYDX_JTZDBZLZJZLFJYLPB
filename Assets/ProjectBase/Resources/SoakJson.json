@@ -1,6 +1,6 @@
 [
   {
-    "choiceType": 0,
+    "choiceType": 1,
     "strHead": "对附子进行浸泡时，应放入：",
     "optionDic": {
       "A": "冰水",
@@ -9,7 +9,7 @@
       "D": "沸水"
     },
     "multipleRights": [],
-    "singleRight": 3,
+    "singleRight": 4,
     "score": 1.0,
     "strAnalysis": "附子需要沸水浸泡才能提取出有效成分"
   }

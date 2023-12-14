@@ -10,13 +10,13 @@ namespace ProjectBase.Exam
     {
         public enum ChoiceType
         {
-            Single,
+            Single = 1,
             Multiple
         }
 
         public enum ChoiceIndex
         {
-            A,
+            A = 1,
             B,
             C,
             D,
@@ -44,6 +44,7 @@ namespace ProjectBase.Exam
             Z
         }
 
+        public int id;
         public ChoiceType choiceType;
         public string strHead;
         public Dictionary<ChoiceIndex, string> optionDic = new Dictionary<ChoiceIndex, string>();

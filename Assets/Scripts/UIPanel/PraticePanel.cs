@@ -12,7 +12,6 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		protected override void OnInit(IUIData uiData = null)
 		{
 			mData = uiData as PraticePanelData ?? new PraticePanelData();
-			// please add init code here
 		}
 		
 		protected override void OnOpen(IUIData uiData = null)

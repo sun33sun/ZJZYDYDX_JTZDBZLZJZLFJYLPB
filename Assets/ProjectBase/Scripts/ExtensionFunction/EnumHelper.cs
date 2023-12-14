@@ -45,11 +45,16 @@ namespace ProjectBase.EnumExtension
 				string strArr = obj.ToString();
 				FieldInfo fieldInfo = type.GetField(strArr);
 				DescriptionAttribute descriptionAttribute = fieldInfo.GetCustomAttribute(descriptionType) as DescriptionAttribute;
+				string description;
 				if (descriptionAttribute != null)
 				{
-					string description = descriptionAttribute.Description;
-					newDic.Add((T)Enum.ToObject(type, value), new KeyValuePair<int, string>(value, description));
+					 description = descriptionAttribute.Description;
 				}
+				else
+				{
+					description = strArr;
+				}
+				newDic.Add((T)Enum.ToObject(type, value), new KeyValuePair<int, string>(value, description));
 			}
 			_enumDic.Add(type, newDic);
 		}
@@ -128,6 +133,29 @@ namespace ProjectBase.EnumExtension
 			if (i2 < 0)
 				i2 = _enumDic[type].Values.Sum(value => value.Key);
 			return i1 == i2;
+		}
+
+		public static IEnumerable<T> All<T>() where T : Enum
+		{
+			Type type = typeof(T);
+			AddToDic<T>(type);
+
+			return _enumDic[type].Keys.Cast<T>();
+		}
+
+		public static IEnumerable<string> StringValues<T>()where T : Enum
+		{
+			Type type = typeof(T);
+			AddToDic<T>(type);
+
+			return _enumDic[type].Values.Select(value => value.Value.ToString());
+		}
+
+		public static IEnumerable<T> Values<T>() where T : Enum
+		{
+			Type type = typeof(T);
+			AddToDic<T>(type);
+			return _enumDic[type].Keys.Cast<T>();
 		}
 	}
 }

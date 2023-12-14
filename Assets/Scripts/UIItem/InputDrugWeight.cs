@@ -9,4 +9,5 @@ public class InputDrugWeight : MonoBehaviour
     public Image img;
     public TextMeshProUGUI tmp;
     public InputField input;
+    public TextMeshProUGUI tmpRightWeight;
 }

@@ -9,96 +9,73 @@ using ProjectBase;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-    [Serializable]
-    public class ProfileContent
-    {
-        public string content;
-        public List<Sprite> sprites;
-    }
+	[Serializable]
+	public class ProfileContent
+	{
+		public string content;
+		public List<Sprite> sprites;
+	}
 
-    public class ProfilePanelData : UIPanelData
-    {
-    }
+	public class ProfilePanelData : UIPanelData
+	{
+	}
 
-    public partial class ProfilePanel : UIPanel
-    {
-        [Space(10)] [SerializeField] Image imgPrefab;
-        [SerializeField] List<ProfileContent> Contents;
+	public partial class ProfilePanel : UIPanel
+	{
+		[Space(10)][SerializeField] Image imgPrefab;
+		[SerializeField] List<ProfileContent> Contents;
 
-        private List<Image> imgs = new List<Image>();
+		private List<Image> imgs = new List<Image>();
 
-        protected override void OnInit(IUIData uiData = null)
-        {
-            mData = uiData as ProfilePanelData ?? new ProfilePanelData();
+		DateTime startTime;
 
-            Image imgGoal = togGoal.GetComponent<Image>();
-            togGoal.AddAwaitAction(isOn =>
-            {
-                togGoal.animator.SetBool("isOn", isOn);
-                if (isOn)
-                {
-                    LoadContent(0);
-                }
-            });
+		protected override void OnInit(IUIData uiData = null)
+		{
+			mData = uiData as ProfilePanelData ?? new ProfilePanelData();
 
-            Image imgRequirement = togRequirement.GetComponent<Image>();
-            togRequirement.AddAwaitAction( isOn =>
-            {
-                togRequirement.animator.SetBool("isOn", isOn);
-                if (isOn)
-                {
-                    LoadContent(1);
-                }
-            });
+			Image imgGoal = togGoal.GetComponent<Image>();
+			togGoal.AddAwaitAction(isOn =>
+			{
+				togGoal.animator.SetBool("isOn", isOn);
+				objGoal.gameObject.SetActive(isOn);
+			});
 
-            Image imgPrinciple = togPrinciple.GetComponent<Image>();
-            togPrinciple.onValueChanged.AddListener(isOn =>
-            {
-                togPrinciple.animator.SetBool("isOn", isOn);
-                if (isOn)
-                {
-                    LoadContent(2);
-                }
-            });
-        }
+			Image imgRequirement = togRequirement.GetComponent<Image>();
+			togRequirement.AddAwaitAction(isOn =>
+			{
+				togRequirement.animator.SetBool("isOn", isOn);
+				objRequirement.gameObject.SetActive(isOn);
+			});
 
-        void LoadContent(int nowIndex)
-        {
-            //清除
-            for (int i = 0; i < imgs.Count; i++)
-                Destroy(imgs[i].gameObject);
-            imgs.Clear();
-            tmpContent.text = "";
-            //加载
-            foreach (var VARIABLE in Contents[nowIndex].sprites)
-            {
-                Image img = Instantiate(imgPrefab);
-                img.sprite = VARIABLE;
-                img.transform.SetParent(vlgImage, false);
-                imgs.Add(img);
-            }
-            tmpContent.text = Contents[nowIndex].content;
-            LayoutRebuilder.ForceRebuildLayoutImmediate(vlgImage);
-        }
+			Image imgPrinciple = togPrinciple.GetComponent<Image>();
+			togPrinciple.onValueChanged.AddListener(isOn =>
+			{
+				togPrinciple.animator.SetBool("isOn", isOn);
+				objPrinciple.gameObject.SetActive(isOn);
+			});
+		}
 
-        protected override void OnOpen(IUIData uiData = null)
-        {
-        }
+		protected override void OnOpen(IUIData uiData = null)
+		{
+		}
 
-        protected override void OnShow()
-        {
-            UIKit.GetPanel<BottomPanel>().SwitchGroup(1);
-            togGoal.isOn = true;
-            togGoal.animator.SetBool("isOn", true);
-            LoadContent(0);
-        }
+		protected override void OnShow()
+		{
+			UIKit.GetPanel<BottomPanel>().SwitchGroup(1);
+			togGoal.isOn = true;
+			togGoal.animator.SetBool("isOn", true);
 
-        protected override void OnHide()
-        {
-        }
+			ReportPanelData.Instance.RecordStartTime(ReportName.实验简介);
+		}
 
-        protected override void OnClose()
-        {
-        }
-    }
+		protected override void OnHide()
+		{
+			ReportPanelData.Instance.RecordGetedScore(ReportName.实验简介);
+			ReportPanelData.Instance.RecordEndTime(ReportName.实验简介);
+		}
+
+		protected override void OnClose()
+		{
+		}
+	}
 }

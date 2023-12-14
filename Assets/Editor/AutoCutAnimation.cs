@@ -94,6 +94,10 @@ public class AutoCutAnimation : Editor
                     string animFile = string.Format("{0}/{1}.anim", outputDir, animClip.name);
                     AssetDatabase.CreateAsset(newClip, animFile);
                 }
+                else
+                {
+                    Debug.Log(item.name);
+                }
             }
         }
         AssetDatabase.Refresh();

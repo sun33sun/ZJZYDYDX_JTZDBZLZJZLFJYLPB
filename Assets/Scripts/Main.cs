@@ -7,6 +7,9 @@ using QFramework;
 using UnityEngine;
 using ProjectBase;
 using ProjectBase.EnumExtension;
+using ProjectBase.Exam;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -21,8 +24,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 				{
 					previewPanelData = new PreviewPanelData();
 					previewPanelData.isSubmit = false;
-					//previewPanelData.rightDisease = EnumHelper.Random<Disease>();
-					previewPanelData.rightDisease = Disease.Severe;
+					previewPanelData.rightDisease = EnumHelper.Random<Disease>();
+					//previewPanelData.rightDisease = Disease.Severe;
 				}
 				return previewPanelData;
 			}
@@ -35,6 +38,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			await ExtensionFunction.UnrecordOpenPanelAsync<BottomPanel>(BottomPanel.Name).ToUniTask(this);
 			ExtensionFunction._topPanel = UIKit.GetPanel<TopPanel>();
 			ExtensionFunction._bottomPanel = UIKit.GetPanel<BottomPanel>();
+
+			ReportPanelData reportPanelData = ReportPanelData.Instance;
 		}
 	}
 }

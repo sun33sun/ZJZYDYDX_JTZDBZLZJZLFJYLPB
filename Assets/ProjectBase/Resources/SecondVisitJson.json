@@ -1,6 +1,6 @@
 [
   {
-    "choiceType": 0,
+    "choiceType": 1,
     "strHead": "效不更方，上方加桑寄生__克，杜仲__克，益母草__克，续服__剂。",
     "optionDic": {
       "A": "12；12；12；五",
@@ -9,7 +9,7 @@
       "D": "12；21；12；四"
     },
     "multipleRights": [],
-    "singleRight": 3,
+    "singleRight": 1,
     "score": 1.0,
     "strAnalysis": ""
   }

@@ -11,6 +11,7 @@ using QFramework;
 using UnityEngine.Serialization;
 using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -37,19 +38,23 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		public bool isSubmit = false;
 		public bool isRight = false;
 		public Disease rightDisease;
+		public float getedScore;
 	}
 
 	public partial class PreviewPanel : UIPanel
 	{
 		[SerializeField] private List<Sprite> _sprites;
-
+		
 		Disease _selectedDisease = Disease.Mild;
-		[SerializeField] List<Toggle> _leftToggles;
+		[Header("患者症状")][SerializeField] List<Toggle> _leftToggles;
 
+		
 		Symptom _introductionSymptom = Symptom.None;
-		[SerializeField] List<Toggle> _topToggles;
+		[Header("救治方法说明")][SerializeField] List<Toggle> _topToggles;
+		[SerializeField] List<string> _topContent;
 
-		public Symptom _selectedSymptom = Symptom.None;
+
+		[Header("我的治疗方案")] public Symptom _selectedSymptom = Symptom.None;
 		[SerializeField] List<Toggle> _bottomToggles;
 		[SerializeField] List<Symptom> _rightSymptoms;
 		//List<Symptom> _rightSymptoms = new List<Symptom>()
@@ -61,7 +66,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
 		protected override void OnInit(IUIData uiData = null)
 		{
-			mData = uiData as PreviewPanelData ?? new PreviewPanelData();
+			mData = Main.Instance.previewPanelData;
+			ReportPanelData.Instance.RecordStartTime(ReportName.实验预习);
 
 			GameRoot.Instance.StartPatient(mData.rightDisease);
 			InitTopToggle();
@@ -75,23 +81,31 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
 			InitLeftToggle();
 			InitBottomToggle();
-			btnSubmit.AddAwaitAction(async () =>
-			{
-				if (IsRightResult())
-				{
-					mData.isRight = true;
-					await objTip.ShowAsync();
-				}
-				else
-				{
-					btnSubmit.gameObject.SetActive(false);
-					btnConfirm.gameObject.SetActive(true);
-					ShowAnalysis();
-					SetBottomAndLeftToggleInteractable(false);
-				}
-				mData.isSubmit = true;
-			});
+			btnSubmit.AddAwaitAction(Submit);
 			btnTip.AddAwaitAction(ExtensionFunction._topPanel.DoubleConfirmBackMain);
+		}
+
+		async UniTask Submit()
+		{
+			if (IsRightResult())
+			{
+				mData.isRight = true;
+				mData.getedScore = 5;
+				await objTip.ShowAsync();
+			}
+			else
+			{
+				btnSubmit.gameObject.SetActive(false);
+				btnConfirm.gameObject.SetActive(true);
+				ShowAnalysis();
+				SetBottomAndLeftToggleInteractable(false);
+			}
+			mData.isSubmit = true;
+
+			//实验报告_实验预习
+
+			ReportPanelData.Instance.RecordGetedScore(ReportName.实验预习,mData.getedScore);
+			ReportPanelData.Instance.RecordEndTime(ReportName.实验预习);
 		}
 
 		void LoadSubmitedPanel()
@@ -172,10 +186,12 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			{
 				Image img = _topToggles[i].GetComponent<Image>();
 				Symptom symptom = (Symptom)ExtensionFunction.Pow2(i);
+				int index = i;
 				_topToggles[i].AddAwaitAction(isOn =>
 				{
 					if (isOn)
 					{
+						tmpDescribe.text = _topContent[index];
 						_introductionSymptom = symptom;
 						img.sprite = _sprites[3];
 					}

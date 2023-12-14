@@ -11,14 +11,8 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-    public partial class ObjSelectCase : UIElement
+	public partial class ObjSelectCase : UIElement
     {
-        public enum Case
-        {
-            MaleStudent,
-            FemaleClerk
-        }
-
         public Case NowCase { get; private set; }
 
         private void Awake()

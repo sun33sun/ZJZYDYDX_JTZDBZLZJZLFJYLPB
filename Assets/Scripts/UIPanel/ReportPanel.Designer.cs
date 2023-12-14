@@ -5,7 +5,7 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:45fed127-2992-4516-8b48-8202a1a562c4
+	// Generate Id:02ce230c-1bee-4b1a-969f-3bf0fd7029bf
 	public partial class ReportPanel
 	{
 		public const string Name = "ReportPanel";

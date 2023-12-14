@@ -12,7 +12,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
         private CancellationTokenSource _ctsEnable;
         private Transform _cameraTrans;
 
-        public async void StartPharmacy(ObjSelectCase.Case caseType, Camera camera)
+        public async void StartPharmacy(Case caseType, Camera camera)
         {
             if (this.GetCancellationTokenOnDestroy().IsCancellationRequested)
                 return;
@@ -25,7 +25,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
             Companion.transform.position = CompanionSource.transform.position;
             switch (caseType)
             {
-                case ObjSelectCase.Case.MaleStudent:
+                case Case.MaleStudent:
                     MaleStudent.gameObject.SetActive(true);
                     await UniTask.Yield();
                     try
@@ -38,7 +38,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
                     }
 
                     break;
-                case ObjSelectCase.Case.FemaleClerk:
+                case Case.FemaleClerk:
                     FemaleClerk.gameObject.SetActive(true);
                     FemaleClerk.transform.rotation = FemaleClerkSource.transform.rotation;
                     FemaleClerk.transform.position = FemaleClerkSource.transform.position;

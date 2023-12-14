@@ -3,7 +3,137 @@ guid: e3ea6b9f4fcd9d247a97d399991b5ace
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baituliao01
+    second: {fileID: 2100000, guid: bfccf87f8aada6c49b84ec7ec23508b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baozhuangzhi
+    second: {fileID: 2100000, guid: 5719b437ba4ec96499e0ebda520bda86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bingxiang
+    second: {fileID: 2100000, guid: 7b6d343b5975f3f489cc0f693b35dc45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boli001
+    second: {fileID: 2100000, guid: f0d0e32636f324d4bac78f893dd02223, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chufangdeng
+    second: {fileID: 2100000, guid: 2c5c342918d06a44bb8fea208cfe3a38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chufangdimian_d
+    second: {fileID: 2100000, guid: 6a154d20f7205d24ea58adc9f2c006e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chufangqiang_d
+    second: {fileID: 2100000, guid: e2a3a9326f3f349449cf5cfbbe7abe7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chugui01
+    second: {fileID: 2100000, guid: 667f25741f785e64d9fcc4505bd76806, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chugui02
+    second: {fileID: 2100000, guid: c388c4c52125c1c4d8dfe6211210a7be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chugui03
+    second: {fileID: 2100000, guid: 8c3d8c21536251b4aa6df3bf236c8d1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chugui04
+    second: {fileID: 2100000, guid: 7ad2aa7e6e249374682cccb4f545c0fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chugui05
+    second: {fileID: 2100000, guid: 766d996e18ad6ca4aa0c8861b4a6c2af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dianzicheng
+    second: {fileID: 2100000, guid: dd6f9d029e431994c8c13058833f2a55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fuzi01
+    second: {fileID: 2100000, guid: 9497e5bdf00069b4ba2f6eb59546e163, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: geshanding
+    second: {fileID: 2100000, guid: ede02ebe62763ba49bfa692d69ebbe77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: meiqizao
+    second: {fileID: 2100000, guid: 9519047f078d42049b7b84ac81757602, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: men
+    second: {fileID: 2100000, guid: 127ba32fdc4d7804f9dd0acfd8554afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: muwen
+    second: {fileID: 2100000, guid: d36c9b5779c313a4b914b424f097aa9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shaguo
+    second: {fileID: 2100000, guid: 310d3c1afc38b4b41a42e9e410c5ad5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shaoshuihu
+    second: {fileID: 2100000, guid: 9d9af902f166b994981bf50be963fbe2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shuichi
+    second: {fileID: 2100000, guid: 07c205855d6e50f42b0e3da1b5ce8f45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shuihu
+    second: {fileID: 2100000, guid: c355410a625282743a4e06e325737ec5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suanjiu
+    second: {fileID: 2100000, guid: 1f23563810fede049bfa8b16b9c66c0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wan
+    second: {fileID: 2100000, guid: db46a26d270e2b646b058ea6281b3ed9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaocai01
+    second: {fileID: 2100000, guid: 321c1b5a34b10c64bbd678ca16e77b9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: youyanji
+    second: {fileID: 2100000, guid: 59751b1a023c9e6499955ca04f1cd588, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -45,7 +175,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

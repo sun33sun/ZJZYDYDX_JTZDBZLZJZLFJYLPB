@@ -5,7 +5,7 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:465b28a4-1c6c-45bb-b993-acfdc6d12455
+	// Generate Id:ef2bef0b-9f87-462a-befc-7525040f3e5b
 	public partial class CasePanel
 	{
 		public const string Name = "CasePanel";

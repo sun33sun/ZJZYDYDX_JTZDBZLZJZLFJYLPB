@@ -1,4 +1,4 @@
-// Generate Id:49da4bae-ce6e-44bd-9cc9-d239c837a56c
+// Generate Id:2adc02ac-e90c-49a9-aaa1-821eaa1c0507
 using UnityEngine;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
@@ -17,6 +17,8 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 		public UnityEngine.GameObject OpenMedicineBag;
 
 		public UnityEngine.GameObject Kettle;
+
+		public UnityEngine.Playables.PlayableDirector drugStorage;
 
 	}
 }

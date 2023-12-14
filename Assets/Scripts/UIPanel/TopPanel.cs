@@ -55,6 +55,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		
 		protected override void OnOpen(IUIData uiData = null)
 		{
+
 		}
 		
 		protected override void OnShow()
@@ -72,32 +73,32 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		public async UniTask OpenEye()
 		{
 			imgBlank.gameObject.SetActive(true);
-			Material mat = imgBlank.material;
+			//Material mat = imgBlank.material;
 			Vector4 vector = new Vector4(0.6f, 0, 1, 1);
 			while (vector.y < 1)
 			{
 				vector.y += Time.deltaTime;
-				mat.SetVector("_Param", vector);
+				//mat.SetVector("_Param", vector);
 				await UniTask.Yield();
 			}
 			vector.y = 1;
-			mat.SetVector("_Param", vector);
+			//mat.SetVector("_Param", vector);
 			imgBlank.gameObject.SetActive(false);
 		}
 		
 		public async UniTask CloseEye()
 		{
 			imgBlank.gameObject.SetActive(true);
-			Material mat = imgBlank.material;
+			//Material mat = imgBlank.material;
 			Vector4 vector = new Vector4(0.6f, 1, 1, 1);
 			while (vector.y > 0)
 			{
 				vector.y -= Time.deltaTime;
-				mat.SetVector("_Param", vector);
+				//mat.SetVector("_Param", vector);
 				await UniTask.Yield();
 			}
 			vector.y = 0;
-			mat.SetVector("_Param", vector);
+			//mat.SetVector("_Param", vector);
 		}
 	}
 }

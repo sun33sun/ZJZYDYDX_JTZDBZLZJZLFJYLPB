@@ -34,7 +34,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
                 await ExtensionFunction._topPanel.imgHelp.ShowAsync();
             });
 
-            btnScreen.OnPointerClickEvent(d => { Screen.fullScreen = !Screen.fullScreen; });
+            btnScreen.OnPointerDownEvent(d => { Screen.fullScreen = !Screen.fullScreen; });
         }
 
         protected override void OnOpen(IUIData uiData = null)

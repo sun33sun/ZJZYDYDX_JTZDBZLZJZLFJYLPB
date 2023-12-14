@@ -1,5 +1,5 @@
 ﻿/****************************************************************************
- * 2023.9 ADMIN-20230222V
+ * 2023.10 ADMIN-20230222V
  ****************************************************************************/
 
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 	public partial class ImgInputWeight
 	{
 		[SerializeField] public UnityEngine.UI.Button btnSubmit;
-		[SerializeField] public UnityEngine.RectTransform RightDrugGroup;
+		[SerializeField] public ProjectBase.HorizontalSegmentation RightDrugGroup;
 
 		public void Clear()
 		{

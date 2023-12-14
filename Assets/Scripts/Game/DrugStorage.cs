@@ -17,7 +17,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 		{
 			isEnd = true;
 		}
-		
+
 		public async UniTask StartDrugStorage(Camera camera)
 		{
 			isEnd = false;
@@ -28,9 +28,9 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
 			_cameraTrans.position = DrugStorageCameraPosition.transform.position;
 			_director.Play();
 			await ExtensionFunction._topPanel.OpenEye();
-			await UniTask.WaitUntil(() => isEnd);
+			await UniTask.WaitUntil(() => isEnd, cancellationToken: this.GetCancellationTokenOnDestroy());
 		}
-		
+
 		private void OnDisable()
 		{
 			_director.Stop();

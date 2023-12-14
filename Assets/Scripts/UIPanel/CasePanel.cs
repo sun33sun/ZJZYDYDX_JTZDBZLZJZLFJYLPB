@@ -5,51 +5,67 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 using ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-    public class CasePanelData : UIPanelData
-    {
-    }
+	public enum Case
+	{
+		MaleStudent,
+		FemaleClerk
+	}
 
-    public partial class CasePanel : UIPanel
-    {
-        private CancellationToken _tokenDestroy;
 
-        protected override void OnInit(IUIData uiData = null)
-        {
-            mData = uiData as CasePanelData ?? new CasePanelData();
-            _tokenDestroy = this.GetCancellationTokenOnDestroy();
-        }
+	public class CasePanelData : UIPanelData
+	{
+	}
 
-        async UniTaskVoid Process()
-        {
-            await UniTask.WhenAny(objSelectCase.btnCase1.OnClickAsync(_tokenDestroy),
-                objSelectCase.btnCase2.OnClickAsync(_tokenDestroy));
-            objFirstVisit.NowCase = objSelectCase.NowCase;
-            await objFirstVisit.ShowAsync();
-            await objFirstVisit.btnSubmit.OnClickAsync(_tokenDestroy);
-            await selectDrug.ShowAsync();
-            await selectDrug.imgInputWeight.btnSubmit.OnClickAsync(_tokenDestroy);
-            
-            GameRoot.Instance.StartCase(objSelectCase.NowCase);
-        }
+	public partial class CasePanel : UIPanel
+	{
+		private CancellationToken _tokenDestroy;
 
-        protected override void OnOpen(IUIData uiData = null)
-        {
-        }
+		protected override void OnInit(IUIData uiData = null)
+		{
+			mData = uiData as CasePanelData ?? new CasePanelData();
+			_tokenDestroy = this.GetCancellationTokenOnDestroy();
+		}
 
-        protected override void OnShow()
-        {
-            Process().Forget();
-        }
+		async UniTaskVoid Process()
+		{
+			await UniTask.WhenAny(objSelectCase.btnCase1.OnClickAsync(_tokenDestroy),
+				objSelectCase.btnCase2.OnClickAsync(_tokenDestroy));
+			//ÉèÖÃNowCase
+			objFirstVisit.NowCase = objSelectCase.NowCase;
+			selectDrug.NowCase = objSelectCase.NowCase;
 
-        protected override void OnHide()
-        {
-        }
+			await objFirstVisit.ShowAsync();
+			await objFirstVisit.btnSubmit.OnClickAsync(_tokenDestroy);
+			await selectDrug.ShowAsync();
+			GameObject objInputWeight = selectDrug.imgInputWeight.gameObject;
+			await UniTask.WaitUntil(() => objInputWeight.activeInHierarchy, cancellationToken: _tokenDestroy);
+			await UniTask.WaitUntil(() => !objInputWeight.activeInHierarchy, cancellationToken: _tokenDestroy);
 
-        protected override void OnClose()
-        {
-        }
-    }
+			DrugInfos datas = selectDrug.drugInfoss[(int)selectDrug.NowCase];
+
+			GameRoot.Instance.StartCase(objSelectCase.NowCase, datas);
+		}
+
+		protected override void OnOpen(IUIData uiData = null)
+		{
+		}
+
+		protected override void OnShow()
+		{
+			Process().Forget();
+		}
+
+		protected override void OnHide()
+		{
+		}
+
+		protected override void OnClose()
+		{
+		}
+	}
 }

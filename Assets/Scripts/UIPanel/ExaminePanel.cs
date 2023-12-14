@@ -2,6 +2,7 @@ using ProjectBase;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using System;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
@@ -14,7 +15,10 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
         protected override void OnInit(IUIData uiData = null)
         {
             mData = uiData as ExaminePanelData ?? new ExaminePanelData();
-            btnSubmit.AddAwaitAction(async () => await imgDoubleConfirm.ShowAsync());
+
+			ReportPanelData.Instance.RecordStartTime(ReportName.知识考核);
+
+			btnSubmit.AddAwaitAction(async () => await imgDoubleConfirm.ShowAsync());
             btnConfirm.AddAwaitAction(ExtensionFunction._topPanel.DoubleConfirmBackMain);
 
             btnDoubleCancel.AddAwaitAction(async () => await imgDoubleConfirm.HideAsync());
@@ -25,6 +29,7 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
                 svTitle.Submit();
                 print($"得分情况：{svTitle.GetedTotalScore}");
                 btnSubmit.gameObject.SetActive(false);
+                btnConfirm.gameObject.SetActive(true);
                 await imgDoubleConfirm.HideAsync();
             });
             svTitle.LoadQuestion(ExtensionFunction.questionJson, ExtensionFunction.questionPrefab, ExtensionFunction.optionPrefab);
@@ -36,11 +41,13 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 
         protected override void OnShow()
         {
-        }
+		}
 
-        protected override void OnHide()
+		protected override void OnHide()
         {
-        }
+			ReportPanelData.Instance.RecordGetedScore(ReportName.知识考核, svTitle.GetedTotalScore);
+			ReportPanelData.Instance.RecordEndTime(ReportName.知识考核);
+		}
 
         protected override void OnClose()
         {

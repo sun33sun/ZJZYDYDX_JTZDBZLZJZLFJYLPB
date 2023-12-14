@@ -3,7 +3,112 @@ guid: 1005be1ad9b5b7441b3585a6e05a5900
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baozhuangzhi
+    second: {fileID: 2100000, guid: e5ffe0d6f9b804c4780489b57c475558, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boli001
+    second: {fileID: 2100000, guid: 150c9e78a8f790d4aae96c5d15fedb37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dianzicheng
+    second: {fileID: 2100000, guid: b10b0ce643c92854abb9c07b3e679ee8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dm01
+    second: {fileID: 2100000, guid: 1a39e4b0e5d8e4141b53902c94c96536, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fuzi01
+    second: {fileID: 2100000, guid: 7e971d3ce7ea8114da8b0cd21a151aff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaocai01
+    second: {fileID: 2100000, guid: 3847324d66e92da4b9b075d7d9cb64ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_1
+    second: {fileID: 2100000, guid: bbcc8d32da4ae174f839db362aba8d1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_13
+    second: {fileID: 2100000, guid: a6cab511caf208f48b91f6be428335a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_14
+    second: {fileID: 2100000, guid: 7e4bafd025861e142b5c85a6dd394a1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_15
+    second: {fileID: 2100000, guid: 27a0d959adb176c4b80807a799859a13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_6
+    second: {fileID: 2100000, guid: 211478d6e7ee1bb4cb5fb90abaf59f31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_7
+    second: {fileID: 2100000, guid: 5e830d7560425f94aafd3b27d241a703, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_8
+    second: {fileID: 2100000, guid: 7632ce7e5bf5a274d93fef7b5cbf2b22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yaopin_9
+    second: {fileID: 2100000, guid: 1573e8fc21f06c8419598f99f6ae6c17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang
+    second: {fileID: 2100000, guid: cb2fa8c353a4cbc4daf485a3c276ba92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang010
+    second: {fileID: 2100000, guid: 0ccf624627b30bf4e87067b750c90dec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang02
+    second: {fileID: 2100000, guid: 45d352bb1004a0b438c60376de07df69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang04
+    second: {fileID: 2100000, guid: 829ab615a854c0c4ea54d8669a63f3c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang05
+    second: {fileID: 2100000, guid: 89d265dd767344749b7917a315c44d31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang06
+    second: {fileID: 2100000, guid: 66917eb0f2d9ce449bdc4d72ac1274e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhongyaofang09
+    second: {fileID: 2100000, guid: 89ef0a0c2785b0c4789ff1a928ea52af, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -45,7 +150,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

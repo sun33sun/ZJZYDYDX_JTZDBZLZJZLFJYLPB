@@ -5,7 +5,7 @@ using QFramework;
 
 namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 {
-	// Generate Id:e7c33d23-ff96-41b0-90b4-1cf514ae1047
+	// Generate Id:edf79584-b629-4593-a6ed-b60f3b4e2144
 	public partial class ProfilePanel
 	{
 		public const string Name = "ProfilePanel";
@@ -17,9 +17,11 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 		[SerializeField]
 		public UnityEngine.UI.Toggle togPrinciple;
 		[SerializeField]
-		public TMPro.TextMeshProUGUI tmpContent;
+		public UnityEngine.UI.Image objGoal;
 		[SerializeField]
-		public RectTransform vlgImage;
+		public UnityEngine.UI.Image objRequirement;
+		[SerializeField]
+		public UnityEngine.UI.Image objPrinciple;
 		
 		private ProfilePanelData mPrivateData = null;
 		
@@ -28,8 +30,9 @@ namespace ZJZYDYDX_JTZDBZLZJZLFJYLPB
 			togGoal = null;
 			togRequirement = null;
 			togPrinciple = null;
-			tmpContent = null;
-			vlgImage = null;
+			objGoal = null;
+			objRequirement = null;
+			objPrinciple = null;
 			
 			mData = null;
 		}

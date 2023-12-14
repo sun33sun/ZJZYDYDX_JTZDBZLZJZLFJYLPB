@@ -20,15 +20,15 @@ MonoBehaviour:
     NameToFullName: []
     BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: GameRoot
+    ClassName: Task_FemaleClerk
     Namespace: ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic
-      partial class GameRoot : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class Task_FemaleClerk : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:e270f721-4eee-4c4a-9dd8-a6e627350304\r\nusing UnityEngine;\r\n\r\nnamespace
-      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic partial class GameRoot\r\n\t{\r\n\r\n\t\tpublic
-      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Task_MaleStudent task_MaleStudent;\r\n\r\n\t\tpublic
-      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Task_FemaleClerk task_FemaleClerk;\r\n\r\n\t\tpublic
-      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Pharmacy pharmacy;\r\n\r\n\t\tpublic UnityEngine.Camera
-      renderCamera;\r\n\r\n\t\tpublic ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.DrugStorage
-      drugStorage;\r\n\r\n\t\tpublic ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game.Patient patient;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:2adc02ac-e90c-49a9-aaa1-821eaa1c0507\r\nusing UnityEngine;\r\n\r\nnamespace
+      ZJZYDYDX_JTZDBZLZJZLFJYLPB.Game\r\n{\r\n\tpublic partial class Task_FemaleClerk\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.GameObject Bowl;\r\n\r\n\t\tpublic UnityEngine.ParticleSystem LeftFire;\r\n\r\n\t\tpublic
+      UnityEngine.ParticleSystem RightFire;\r\n\r\n\t\tpublic UnityEngine.GameObject
+      Casserole;\r\n\r\n\t\tpublic UnityEngine.GameObject OpenMedicineBag;\r\n\r\n\t\tpublic
+      UnityEngine.GameObject Kettle;\r\n\r\n\t\tpublic UnityEngine.Playables.PlayableDirector
+      drugStorage;\r\n\r\n\t}\r\n}\r\n"

@@ -166,23 +166,40 @@ namespace ProjectBase
         public static async UniTask ShowPanelAsync(this UIPanel panel)
         {
             panel.Show();
-            await panel.GetComponent<CanvasGroup>().DOFade(1, ShowTime).AsyncWaitForCompletion();
+            CanvasGroup group = panel.GetComponent<CanvasGroup>();
+
+			await group.DOFade(1, ShowTime).AsyncWaitForCompletion();
+            group.interactable = true;
         }
 
-        public static async UniTask OpenPanelAsync<T>(string panelName,IUIData uiData = null) where T : UIPanel
+		public static async UniTask HidePanelAsync(this UIPanel panel)
+		{
+			panel.Show();
+			CanvasGroup group = panel.GetComponent<CanvasGroup>();
+
+			group.interactable = false;
+			await group.DOFade(0, HideTime).AsyncWaitForCompletion();
+		}
+
+		public static async UniTask OpenPanelAsync<T>(string panelName,IUIData uiData = null) where T : UIPanel
         {
             if (NowPanel == null && panelName.IsNullOrEmpty())
                 return;
             await UIKit.OpenPanelAsync<T>(UILevel.CanvasPanel,uiData, prefabName: UI + panelName).ToUniTask(MonoMgr.GetInstance().Controller);
             NowPanel = UIKit.GetPanel<T>();
-            await NowPanel.GetComponent<CanvasGroup>().DOFade(1, ShowTime).AsyncWaitForCompletion();
+            CanvasGroup group = NowPanel.GetComponent<CanvasGroup>();
+
+			await group.DOFade(1, ShowTime).AsyncWaitForCompletion();
+            group.interactable = true;
         }
 
         public static async UniTask ClosePanelAsync()
         {
             if (NowPanel == null)
                 return;
-            await NowPanel.GetComponent<CanvasGroup>().DOFade(0, ShowTime).AsyncWaitForCompletion();
+            CanvasGroup group = NowPanel.GetComponent<CanvasGroup>();
+            group.interactable = false;
+			await group.DOFade(0, HideTime).AsyncWaitForCompletion();
             UIKit.ClosePanel(NowPanel);
             NowPanel = null;
         }
@@ -195,7 +212,7 @@ namespace ProjectBase
 
         public static async UniTask HideAsync(this Component target)
         {
-            await target.transform.DOLocalMoveY(1080, ShowTime).AsyncWaitForCompletion();
+            await target.transform.DOLocalMoveY(1080, HideTime).AsyncWaitForCompletion();
             target.gameObject.SetActive(false);
         }
 
@@ -207,7 +224,7 @@ namespace ProjectBase
 
         public static async UniTask HideAsync(this UIElement target)
         {
-            await target.transform.DOLocalMoveY(1080, ShowTime).AsyncWaitForCompletion();
+            await target.transform.DOLocalMoveY(1080, HideTime).AsyncWaitForCompletion();
             target.Hide();
         }
         
